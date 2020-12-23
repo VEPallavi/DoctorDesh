@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.doctordesh">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".activity.DeshApplication"
+        android:allowBackup="true"
+        android:authorities="${applicationId}.contentprovider"
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/app_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.MeditationWellnessActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.PsychMaterialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EducationalVideosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EducationMaterialActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SendPatientDocumentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsychometricQuestionsActivity"
+
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EvaluationSurveyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StaffMembersListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProviderScheduleActivty"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.StaffMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProvidersScheduleListingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PatientConsentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.VideoCallInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CameraPickerActivity"
+            android:screenOrientation="portrait">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".activity.SurveyListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MedRefillActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.DocumentViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PsychometricScaleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProvidersDashboardActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9180bb75a7ed1b11fa030ca539dbe1d5dcc95b95" />
+
+        <activity
+            android:name=".activity.WatchVideosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource" />
+        </provider>
+
+
+        <activity
+            android:name=".activity.DesignActivity"
+            android:screenOrientation="portrait">
+
+            <!--
+             <intent-filter>
+                 <action android:name="android.intent.action.VIEW"/>
+                 <action android:name="android.intent.action.MAIN"/>
+
+                 <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".activity.ConversationActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <service
+            android:name=".firebaseServices.MessagingService"
+            android:exported="false"
+            android:foregroundServiceType="">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.NotificationListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EducationalVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PatientReferralsThanksActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PatientReferralsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.MessageProviderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.ProvidersListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ContactProviderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:screenOrientation="portrait">
+
+            <!--
+              <intent-filter>
+                  <action android:name="android.intent.action.VIEW"/>
+                  <action android:name="android.intent.action.MAIN"/>
+
+                  <category android:name="android.intent.category.LAUNCHER"/>
+              </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".activity.SavePasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.EmailVerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

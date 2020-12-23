@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_verify_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_send_code"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+    >
+
+
+        <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_txt_enter_otp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:textColor="@color/colorBlack"
+                android:text="Verification code"
+                android:gravity="center"
+                android:textSize="16sp"
+
+        />
+
+
+        <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_code_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_txt_enter_otp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/et_code_2"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:maxLength="1"
+                android:hint="0"
+                android:textColorHint="@color/grey_1"
+                android:inputType="number"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="12dp"
+                android:gravity="center"
+        />
+
+        <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_code_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/et_code_1"
+                app:layout_constraintLeft_toRightOf="@+id/et_code_1"
+                app:layout_constraintRight_toLeftOf="@+id/et_code_3"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="12dp"
+                android:gravity="center"
+                android:hint="0"
+                android:textColorHint="@color/grey_1"
+                android:maxLength="1"
+                android:inputType="number"
+        />
+        <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_code_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/et_code_1"
+                app:layout_constraintLeft_toRightOf="@+id/et_code_2"
+                app:layout_constraintRight_toLeftOf="@+id/et_code_4"
+                android:layout_marginLeft="16dp"
+                android:gravity="center"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="12dp"
+                android:hint="0"
+                android:textColorHint="@color/grey_1"
+                android:maxLength="1"
+                android:inputType="number"
+        />
+        <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_code_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/et_code_1"
+                app:layout_constraintLeft_toRightOf="@+id/et_code_3"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="12dp"
+                android:hint="0"
+                android:textColorHint="@color/grey_1"
+                android:maxLength="1"
+                android:gravity="center"
+                android:inputType="number"
+        />
+
+
+        <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_txt_did_not_got"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/et_code_1"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_resend"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:textColor="@color/colorBlack"
+                android:text="Did not recieved ?"
+
+        />
+
+        <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/et_code_1"
+                android:layout_marginTop="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="10dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_txt_did_not_got"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/colorPrimary"
+                android:text="RESEND"
+
+        />
+
+
+        <com.doctordesh.customViews.RobotoMediumButton
+                android:id="@+id/btn_verify"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/text_verify"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_txt_did_not_got"
+                android:background="@drawable/app_gradient"
+                android:layout_marginTop="72dp"
+
+                android:textColor="@color/colorWhite"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

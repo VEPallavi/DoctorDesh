@@ -1,0 +1,461 @@
+package com.doctordesh.activity
+
+
+import android.Manifest
+import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.ImageDecoder
+import android.graphics.drawable.ColorDrawable
+import android.graphics.pdf.PdfDocument
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
+import com.doctordesh.R
+import com.doctordesh.helpers.Utils
+import com.doctordesh.viewModels.SendPatientDocumentViewModel
+import com.itextpdf.text.Document
+import com.itextpdf.text.Image
+import com.itextpdf.text.pdf.PdfWriter
+import com.scanlibrary.ScanActivity
+import com.scanlibrary.ScanConstants
+import kotlinx.android.synthetic.main.activity_send_patient_document.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
+
+class SendPatientDocumentActivity : AppCompatActivity() {
+
+    private val REQUEST_CODE = 99
+    private var fileName = ""
+    private var mYear: Int = 0
+    var mMonth: Int = 0
+    var mDay: Int = 0
+    var selectedDate = ""
+    var file: File? = null
+    var sendPatientDocumentViewModel: SendPatientDocumentViewModel? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_send_patient_document)
+        initView()
+    }
+
+    fun initView() {
+
+        sendPatientDocumentViewModel =
+            ViewModelProviders.of(this).get(SendPatientDocumentViewModel::class.java)
+
+        toolbar.title = ""
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener { finish() }
+
+
+        cl_add_doc.setOnClickListener(View.OnClickListener {
+            if (checkPermission()) {/* ScanButtonClickListener(ScanConstants.OPEN_CAMERA)*/
+                openImagePicker()
+            } else {
+                requestPermission()
+            }
+
+        })
+
+
+        btn_submit.setOnClickListener(View.OnClickListener {
+
+            openPatientDetailDialog()
+
+        })
+
+
+    }
+
+
+    fun openPatientDetailDialog() {
+        var patientDetailDialog = Dialog(this)
+        patientDetailDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        patientDetailDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        patientDetailDialog!!.setContentView(R.layout.dialog_patient_detail)
+        patientDetailDialog!!.show()
+        patientDetailDialog!!.window!!.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        patientDetailDialog.show()
+
+
+        var etPatientName = patientDetailDialog.findViewById<EditText>(R.id.et_patient_name)
+        var tvPatientDOB = patientDetailDialog.findViewById<EditText>(R.id.tv_patient_dob)
+
+
+
+
+
+
+        var tvCancel = patientDetailDialog.findViewById<TextView>(R.id.tv_cancel)
+
+
+
+        tvCancel.setOnClickListener(View.OnClickListener {
+
+            patientDetailDialog.dismiss()
+
+        })
+
+
+        var tvSubmit = patientDetailDialog.findViewById<TextView>(R.id.tv_submit)
+
+
+
+        tvSubmit.setOnClickListener(View.OnClickListener {
+
+            if (etPatientName.text.toString().isEmpty()) {
+                etPatientName.setError("Please enter patient name")
+            } else if (tvPatientDOB.text.toString().isEmpty()) {
+                tvPatientDOB.setError("Please enter patient DOB")
+            } else {
+                submitPatientDoc(etPatientName.text.toString(), tvPatientDOB.text.toString())
+                patientDetailDialog.dismiss()
+            }
+
+        })
+
+
+    }
+
+
+    fun checkPermission(): Boolean {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            if ((ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.CAMERA
+                ) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED)
+            ) {
+                return true
+            } else {
+                return false
+            }
+
+        } else {
+            return true
+        }
+
+
+    }
+
+    fun requestPermission() {
+
+        var permissions = arrayOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+
+
+        ActivityCompat.requestPermissions(this, permissions, 123);
+
+
+    }
+
+    fun openImagePicker() {
+
+
+        var pickerDialog = Dialog(this)
+        pickerDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        pickerDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        pickerDialog!!.setContentView(R.layout.dialog_image_picker)
+        pickerDialog!!.show()
+        pickerDialog!!.window!!.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        pickerDialog.show()
+
+        var clCamera = pickerDialog.findViewById<ConstraintLayout>(R.id.cl_camera)
+
+        clCamera.visibility = View.GONE
+
+        clCamera.setOnClickListener(View.OnClickListener {
+
+            pickerDialog.dismiss()
+
+            val intent = Intent(
+                this,
+                ScanActivity::class.java
+            )
+            intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, ScanConstants.OPEN_CAMERA)
+
+            startActivityForResult(intent, REQUEST_CODE)
+            //  cl_add_doc.visibility = View.GONE
+
+        })
+
+
+        var clGallery = pickerDialog.findViewById<ConstraintLayout>(R.id.cl_gallery)
+        clGallery.setOnClickListener(View.OnClickListener {
+
+            pickerDialog.dismiss()
+            try {
+
+                val intent = Intent(
+                    this,
+                    ScanActivity::class.java
+                )
+                intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, ScanConstants.OPEN_MEDIA)
+                startActivityForResult(intent, REQUEST_CODE)
+                //  cl_add_doc.visibility = View.GONE
+            } catch (e: Exception) {
+
+                Utils.showToast(this, "No Gallery Found..")
+                hideShareButton()
+                cl_add_doc.visibility = View.VISIBLE
+            }
+
+        })
+
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            cl_add_doc.visibility = View.GONE
+            val uri =
+                data!!.extras!!.getParcelable<Uri>(ScanConstants.SCANNED_RESULT)
+            var bitmap: Bitmap? = null
+            try {
+                bitmap = if (Build.VERSION.SDK_INT < 28) {
+                    MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                } else {
+                    val source = ImageDecoder.createSource(this.contentResolver, uri!!)
+                    ImageDecoder.decodeBitmap(source)
+                }
+
+                contentResolver.delete(uri!!, null, null)
+                iv_scanned_image.setImageBitmap(bitmap)
+
+
+                storeImage(bitmap!!)
+            } catch (e: IOException) {
+                hideShareButton()
+                e.printStackTrace()
+            }
+        } else {
+            cl_add_doc.visibility = View.VISIBLE
+        }
+    }
+
+    fun convertToPDF(imageFile: File) {
+        try {
+
+            var document = Document()
+
+
+            fileName = Date().time.toString() + ".pdf"
+
+
+
+
+            val mediaStorageDir = File(filesDir, "doctordesh" + File.separator + "files")
+            if (!mediaStorageDir.exists()) {
+                if (!mediaStorageDir.mkdirs()) {
+
+                }
+            }
+
+
+
+            file=File(mediaStorageDir,fileName)
+
+
+            PdfWriter.getInstance(
+                document, FileOutputStream(mediaStorageDir.path+File.separator+fileName)
+            )
+
+            document.open()
+
+            val image =
+                Image.getInstance(imageFile.absolutePath)  // Change image's name and extension.
+
+            val scaler = ((document.getPageSize().getWidth() - document.leftMargin()
+                    - document.rightMargin() - 0) / image.width) * 100; // 0 means you have no indentation. If you have any, change it.
+            image.scalePercent(scaler);
+            image.alignment = Image.ALIGN_CENTER or Image.ALIGN_TOP
+
+            document.add(image)
+            document.close()
+
+
+            showShareButton()
+
+        } catch (e: java.lang.Exception) {
+            hideShareButton()
+            Toast.makeText(
+                this,
+                "" + e.localizedMessage,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+
+    fun showShareButton() {
+        btn_submit.visibility = View.VISIBLE
+    }
+
+    fun hideShareButton() {
+        btn_submit.visibility = View.GONE
+    }
+
+
+    fun submitPatientDoc(patientName: String, patientDOB: String) {
+
+        var requestFile = RequestBody.create(MediaType.parse("application/pdf"), file)
+        var img = MultipartBody.Part.createFormData(
+            "patientDoc",
+            file!!.name,
+            requestFile
+        )
+
+        sendPatientDocumentViewModel!!.sendPatientDocument(this, patientName, patientDOB, img)
+            .observe(this,
+                androidx.lifecycle.Observer {
+
+
+
+                    if (it != null && it.has("status") && it.get("status").asString.equals("1")) {
+                        Utils.showLog(it.toString())
+                        Utils.showToast(this, it["message"].toString())
+
+
+                        cl_add_doc.visibility = View.VISIBLE
+                        iv_scanned_image.visibility = View.GONE
+                        hideShareButton()
+
+                    } else {
+                        var message = ""
+                        if (it.has("message")) {
+                            message = it.get("message").asString
+                        } else {
+                            message = getString(R.string.msg_common_error)
+                        }
+
+                        Utils.showToast(this, message)
+                    }
+
+
+                })
+
+
+    }
+
+    fun openDatePicker(textView: TextView) {
+
+        val mCalendar = Calendar.getInstance()
+        mMonth = mCalendar.get(Calendar.MONTH)
+        mDay = mCalendar.get(Calendar.DAY_OF_MONTH)
+        mYear = mCalendar.get(Calendar.YEAR)
+
+
+        var datePickerDialog = DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                run {
+
+
+                    selectedDate = "" + (monthOfYear + 1) + "/" + dayOfMonth + "/" + mYear
+                    textView.text = selectedDate
+                    textView.setError(null)
+
+                }
+            },
+            mYear,
+            mMonth,
+            mDay
+        )
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis())
+
+        datePickerDialog.show()
+
+
+    }
+
+    fun storeImage(image: Bitmap) {
+
+
+       /* val mediaStorageDir = File(
+            Environment.getExternalStorageDirectory().toString() + "/Android/data/"
+                    + applicationContext.packageName + "/Files/PatientDocument"
+        )*/
+
+        val mediaStorageDir = File(filesDir, "doctordesh" + File.separator + "images")
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return
+            }
+        }
+        // Create a media file name
+        val timeStamp = SimpleDateFormat("ddMMyyyy_HHmm").format(Date())
+        val mImageName = "PT_$timeStamp.jpg"
+        val pictureFile = File(mediaStorageDir , mImageName)
+
+        if (pictureFile == null) {
+            Utils.showToast(this, "Error creating media file, check storage permissions: ")
+            return
+        }
+        try {
+            var fos = FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos)
+            fos.close()
+
+            convertToPDF(pictureFile)
+        } catch (e: FileNotFoundException) {
+
+            Utils.showToast(this, "File not found: " + e.message)
+
+        } catch (e: IOException) {
+
+            Utils.showToast(this, "Error accessing file: " + e.message)
+        }
+    }
+
+
+}

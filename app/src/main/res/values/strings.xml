@@ -1,0 +1,216 @@
+<resources>
+    <string name="app_name">DoctorDesh</string>
+    <string name="default_notification_channel_id">123</string>
+    <string name="youtube_api_key">AIzaSyAq76wc84J8oA1TGxQ7eTn3GxNw_bp0Cho</string>
+
+
+    <string name="hint_enter_email_id">Enter email id</string>
+    <string name="hint_enter_pass">Enter password</string>
+    <string name="hint_enter_new_pass">Enter new password</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_credentials">Credentials(Education degree)</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email id</string>
+    <string name="hint_enter_patient_detail">Enter patient detail here</string>
+    <string name="hint_patient_name">Patient name</string>
+    <string name="hint_facility_name">Facility Name &amp; room number</string>
+    <string name="hint_room_number">Your name &amp; direct phone number</string>
+    <string name="hint_reason_referral">Explain reason for referral</string>
+    <string name="hint_facility_name_consent">Facility Name</string>
+    <string name="hint_room_number_consent">Room Number</string>
+
+
+    <string name="text_dashboard_title">Balanced Wellbeing LLC</string>
+    <string name="text_dashboard_sub_title">Dr. Desh\'s HIPAA Compliant App</string>
+    <string name="text_contact_provider_staff">Contact provider/Staff</string>
+    <string name="text_contact_provider">Contact provider</string>
+    <string name="text_call_provider">Call provider</string>
+    <string name="text_message_provider">Message provider</string>
+    <string name="text_message">Message</string>
+    <string name="text_video_call">Video call</string>
+    <string name="text_call">Call</string>
+    <string name="text_video">Videos</string>
+    <string name="text_provider">Provider</string>
+    <string name="text_patient_referrals">Patient referrals</string>
+    <string name="text_video_call_provider">Video call provider</string>
+    <string name="text_send_patient_referral">Send patient referral</string>
+
+    <string name="text_satisfaction_survey">Evaluation surveys</string>
+
+
+    <string name="text_meditation_fall">Meditation/ your wellness</string>
+
+    <string name="text_main_office">Main Office</string>
+
+    <string name="text_terms_condition">Terms and Condition</string>
+    <string name="text_video_call_instructions">Video Call Instructions</string>
+    <string name="text_notification">Notification</string>
+    <string name="text_save_password">Save Password</string>
+    <string name="text_verification">Verification</string>
+    <string name="text_login">LOG IN</string>
+    <string name="text_forgot_pass">FORGOT PASSWORD?</string>
+    <string name="text_send_code">SEND CODE</string>
+    <string name="text_sign_up">SIGN UP</string>
+    <string name="text_sign_in">SIGN IN</string>
+    <string name="text_save">SAVE</string>
+    <string name="text_submit">SUBMIT</string>
+    <string name="text_okay">OKAY</string>
+    <string name="text_save_start">SAVE &amp; START MESSAGING</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_verify">VERIFY</string>
+    <string name="text_settings">Settings</string>
+    <string name="text_about">About</string>
+    <string name="text_about_us">About Us</string>
+    <string name="text_note">Note</string>
+    <string name="text_selected_provider">Selected provider</string>
+    <string name="text_log_out">LOG OUT</string>
+    <string name="text_urgent">URGENT</string>
+    <string name="text_non_urgent">NON URGENT</string>
+    <string name="text_yes">YES</string>
+    <string name="text_no">NO</string>
+    <string name="text_conversation">Conversation</string>
+    <string name="text_congratulations">Congratulations!</string>
+    <string name="text_from_camera">Take from Camera</string>
+    <string name="text_from_gallery">Pick from Gallery</string>
+    <string name="hint_type_message">Type a message</string>
+    <string name="text_camera">Camera</string>
+    <string name="text_gallery">Gallery</string>
+    <string name="text_doc">Document</string>
+    <string name="text_assesments">Assesments</string>
+
+
+    <string name="msg_no_chat_found">No chats found</string>
+    <string name="msg_invalid_email">Please enter valid email id</string>
+    <string name="msg_empty_pass">Please enter your password</string>
+    <string name="msg_empty_current_pass">Please enter your current password</string>
+    <string name="msg_invalid_pass">Password must be atleast 6 characters in length</string>
+    <string name="msg_invalid_otp">Please enter valid OTP code</string>
+    <string name="msg_invalid_name">Please enter valid name</string>
+    <string name="msg_invalid_credential">Please enter valid credential(educational degree)</string>
+    <string name="msg_no_internet">No internet connection, please check your internet connection and try again.</string>
+    <string name="msg_no_assesments">No assesments available.</string>
+    <string name="msg_common_error">Ooppss.. something went wrong, please try again.</string>
+    <string name="msg_otp_sent">OTP has been sent successfully to your email id.</string>
+    <string name="msg_user_registered">Your account has been successfully created.</string>
+    <string name="msg_empty_patient_name">Please enter patient name</string>
+    <string name="msg_empty_facility_name">Please enter facility name</string>
+    <string name="msg_empty_room">Please enter room number</string>
+    <string name="msg_empty_referral_reason">Please enter referral reason</string>
+    <string name="msg_incomplete_permission">Please allow all permissions requires to select profile image</string>
+    <string name="msg_incomplete_permissions">Please allow all permissions</string>
+
+
+    <string name="msg_empty_patient_dob">Please enter patient DOB</string>
+    <string name="msg_empty_patient_location">Please enter patient location</string>
+
+    <string name="msg_empty_medicine_name">Please enter name of medicine</string>
+    <string name="msg_empty_medicine_dose">Please enter dose of medicine</string>
+    <string name="msg_empty_medicine_frequency">Please enter frequency of medicine</string>
+    <string name="msg_empty_pharmacy_name">Please enter pharmacy name</string>
+    <string name="msg_empty_pharmacy_number">Please enter pharmacy number</string>
+    <string name="msg_empty_prn">Please enter PRN reason</string>
+    <string name="msg_empty_pharmacy_fax_number">Please enter pharmacy fax number</string>
+    <string name="msg_empty_your_fax_number">Please enter your fax number</string>
+
+
+    <string name="msg_patient_details">Enter patient details</string>
+    <string name="msg_do_not_have_acc">Do not have account?</string>
+    <string name="msg_already_have_acc">Already have account?</string>
+    <string name="msg_note">For patient related questions please mention patient name, room number, facility name and
+        important details.
+    </string>
+    <string name="msg_note_video_call">Note : Please do video call after getting permission from provider on
+        phone/message.
+    </string>
+    <string name="msg_note_patient_referral">In case of emergencies call provider instead.
+    </string>
+    <string name="msg_note_patient_referral_thanks">Dr. Desh would personally like to thank you for referring a patient
+        to our company. He greatly appreciate your trust and confidence in our service.\n\nIf it is a new patient referral, please obtain PCP order without which our provider is not
+        allowed to see this patient. If it is already our established patient, new PCP order is not needed and be assured that your consult is received and will be seen in our next visit.
+    </string>
+    <string name="msg_exit_from_app">"Are you sure you want to exit?"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_patient_dob">Patient DOB</string>
+    <string name="hint_patient_location">Patient Location</string>
+    <string name="hint_name_of_medicine">Name of medicine</string>
+    <string name="dose_of_medicine">Dose of medicine</string>
+    <string name="hint_frequency_of_medicine">Frequency of medicine</string>
+    <string name="hint_pharmacy_name">Pharmacy name</string>
+    <string name="hint_pharmacy_number">Pharmacy phone number</string>
+
+    <string name="hint_pharmacy_fax_number">Pharmacy fax number</string>
+    <string name="text_edit_profile">EDIT PROFILE</string>
+    <string name="txt_surveys">Surveys</string>
+
+    <string name="txt_consult_received">Consult Received</string>
+    <string name="txt_link_to_download_access_zoom_app"><u>Link to download/access Zoom app </u></string>
+    <string name="txt_referral_from_nursing_assisted_living_facility">Referral from nursing/assisted living facility</string>
+    <string name="txt_referral_from_hospital_outpatient_facility">Referral from hospital/outpatient facility</string>
+    <string name="txt_please_select_referral_option_first">Please select referral option first</string>
+    <string name="txt_psychometric_scales_screening">Psychometric scales/\nScreening</string>
+    <string name="txt_patient_consent">Patient Consent</string>
+    <string name="txt_educational_material">Educational Material</string>
+    <string name="txt_review_provider_schedule">Review Provider\nSchedule</string>
+    <string name="txt_request_medical_refill">Request Medical Refill</string>
+    <string name="txt_chronic_care_management">CCM (Chronic Care Management)</string>
+    <string name="msg_i_consent_to_ccm_services"><b>I consent to CCM Services</b> and understand that my care plan will either given to me or mailed to my home address on file</string>
+    <string name="txt_i_do_not_consent_to_ccm_services"><b>I Do NOT consent to CCM Services.</b></string>
+    <string name="txt_ccm_detail">Chronic Care Management (CCM) is defined as the non-face-to-face services provided to Medicare beneficiaries who have multiple (two or more), significant chronic conditions. In addition to office visits and other face-to- face encounters (billed separately), these services include communication with the patient and other treating health professionals for care coordination (both electronically and by phone), medication management, and being accessible 24 hours a day to patients and any care providers (physicians or other clinical staff). The creation and revision of electronic care plans is also a key component of CCM and can be provided to the Medicare Beneficiary.</string>
+
+    <string name="txt_behavioral_health_integration">BHI (Behavioral Health Integration)</string>
+
+    <string name="msg_i_consent_to_bhi_services"><b>I consent to BHI Services</b> and understand that my care plan will either be given to me or mailed to my home address on file.
+</string>
+
+    <string name="txt_bhi_detail">Behavioral Health Integration (BHI) services include an initial assessment by the care team, consulting with relevant specialists which would include conferring with a psychiatric consultant as well as the administration of applicable validated rating scales, systematic assessments and monitoring. BHI also includes care planning between you and the care team. A BHI Care Plan will be created and provided to you accordingly.</string>
+
+
+    <string name="txt_i_do_not_consent_to_bhi_services"><b>I Do NOT consent to BHI Services.</b></string>
+    <string name="txt_clear">Clear</string>
+    <string name="txt_patient_or_representative_signature">Patient or Representative\'s Signature</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_care_navigator">Care Navigator</string>
+    <string name="hint_verbal_consent_given_by">Verbal consent given by</string>
+    <string name="msg_select_ccm">Please select CCM option</string>
+    <string name="msg_select_bhi">Please select BHI option</string>
+    <string name="msg_add_signature">Please add signature</string>
+    <string name="msg_enter_verbal_consent_name">Please enter verbal consent name</string>
+    <string name="msg_enter_care_navigator">Please enter care navigator</string>
+    <string name="msg_enter_date">Please enter date</string>
+    <string name="msg_save_signature">Please save your signature.</string>
+    <string name="text_contact_staff_member">Contact staff member</string>
+    <string name="text_contact_main_office">Contact main office</string>
+    <string name="text_staff_call_provider">Staff Call Provider</string>
+    <string name="text_staff_message_provider">Staff Message Provider</string>
+    <string name="text_staff_contact_provider">Staff Contact Provider</string>
+    <string name="msg_no_providers_found">No providers found</string>
+    <string name="msg_no_schedule_found">No schedule found</string>
+    <string name="text_provider_scheduler">Provider Schedule</string>
+    <string name="text_schedule">Schedule</string>
+    <string name="text_evaluation_survey">Evaluation Survey</string>
+    <string name="text_evaluate_our_provider">Evaluate our provider</string>
+    <string name="text_app_satisfaction_survey_research_project">App satisfaction survey-\nA research project</string>
+    <string name="text_psychometic_scales">Psychometric Scales</string>
+    <string name="text_check_score">check score</string>
+    <string name="text_send_patient_document">Send Patient Document</string>
+    <string name="text_patient_document">Patient Document</string>
+    <string name="txt_select_referral_from">Select Referral from</string>
+    <string name="text_evaluate_our_staff">Evaluate our staff</string>
+    <string name="text_patient_detail">Patient Detail</string>
+    <string name="txt_cancel">cancel</string>
+    <string name="text_educational_material">Educational Material</string>
+    <string name="text_learn_psych_meds">Learn psych meds</string>
+    <string name="text_learn_psych_disorders">Learn psych disorders</string>
+    <string name="text_educational_videos_from_our_nteam">Educational videos from our \nteam</string>
+    <string name="text_general_education_videos">General education videos</string>
+    <string name="text_educational_videos">Educational Videos</string>
+    <string name="txt_alert">Alert!</string>
+    <string name="msg_no_material_found">No Material Found</string>
+    <string name="msg_no_data_found">No Data Found</string>
+
+
+</resources>

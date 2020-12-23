@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@color/colorWhite"
+    android:layout_margin="20dp">
+
+
+    <com.doctordesh.customViews.RobotoRegularTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Disclosure : Your chat conversation and shared documents will be accessible by our parctice manager/admin
+for documentation purposes in respective patient charts on as needed basis."
+        android:textColor="@color/colorBlack"
+
+        android:id="@+id/tv_msg"
+
+
+
+        />
+
+
+    <com.doctordesh.customViews.RobotoRegularTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+android:textColor="@color/colorPrimaryDark"
+        android:text="OK"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_msg"
+
+android:paddingLeft="16dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:id="@+id/tv_ok"
+       />
+</androidx.constraintlayout.widget.ConstraintLayout>

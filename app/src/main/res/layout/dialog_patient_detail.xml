@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:background="@drawable/white_back_angular_box"
+    android:elevation="5dp"
+    android:padding="25dp">
+
+    <com.doctordesh.customViews.RobotoMediumTextView
+        android:id="@+id/tv_patient_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_patient_detail"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.doctordesh.customViews.RobotoRegularEditText
+        android:id="@+id/et_patient_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/light_grey_border_box"
+        android:hint="@string/hint_patient_name"
+        android:padding="12dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_detail" />
+
+
+    <com.doctordesh.customViews.RobotoRegularEditText
+        android:id="@+id/tv_patient_dob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/light_grey_border_box"
+        android:padding="12dp"
+        android:hint="@string/hint_patient_dob"
+        android:textColor="@color/colorBlack"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_name" />
+
+
+    <com.doctordesh.customViews.RobotoMediumTextView
+        android:id="@+id/tv_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/text_submit"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_patient_dob" />
+
+    <com.doctordesh.customViews.RobotoMediumTextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_2"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/txt_cancel"
+        android:textAllCaps="true"
+        android:textColor="@color/grey_5"
+        app:layout_constraintRight_toLeftOf="@+id/tv_submit"
+        app:layout_constraintTop_toTopOf="@+id/tv_submit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

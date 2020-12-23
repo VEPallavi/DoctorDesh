@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="5dp"
+android:layout_margin="10dp"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       android:orientation="vertical"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       android:background="@color/colorWhite"
+                                                       android:paddingLeft="25dp"
+                                                       android:paddingRight="25dp"
+                                                       android:paddingBottom="20dp"
+                                                       android:paddingTop="20dp"
+
+    >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_document"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cl_camera"
+                app:layout_constraintHorizontal_chainStyle="packed"
+        >
+
+            <ImageView
+                    android:id="@+id/iv_doc_image"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_document"
+
+            />
+            <com.doctordesh.customViews.RobotoRegularTextView
+                    android:id="@+id/tv_document"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_doc_image"
+                    android:text="@string/text_doc"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textColor="@color/grey_5"
+                    android:textSize="13sp"
+
+
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_camera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/cl_document"
+                app:layout_constraintRight_toLeftOf="@+id/cl_gallery"
+        >
+
+            <ImageView
+                    android:id="@+id/iv_cam_image"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/dialog_camera"
+            />
+
+            <com.doctordesh.customViews.RobotoRegularTextView
+                    android:id="@+id/tv_camera"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_cam_image"
+                    android:text="@string/text_camera"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textColor="@color/grey_5"
+                    android:textSize="13sp"
+
+
+            />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_gallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/cl_camera"
+        >
+            <ImageView
+                    android:id="@+id/iv_gallery_image"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_album"
+
+            />
+
+            <com.doctordesh.customViews.RobotoRegularTextView
+                    android:id="@+id/tv_gallery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_gallery_image"
+                    android:text="@string/text_gallery"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textColor="@color/grey_5"
+                    android:textSize="13sp"
+
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

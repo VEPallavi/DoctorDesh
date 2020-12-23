@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197588958958",
+    "firebase_url": "https://doctordesh-edad9.firebaseio.com",
+    "project_id": "doctordesh-edad9",
+    "storage_bucket": "doctordesh-edad9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197588958958:android:3dfbd10bee893413273dff",
+        "android_client_info": {
+          "package_name": "com.doctordesh1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197588958958-e6p2eu5dnr5bufb3r6gmtvqbvmurhk57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq76wc84J8oA1TGxQ7eTn3GxNw_bp0Cho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197588958958-e6p2eu5dnr5bufb3r6gmtvqbvmurhk57.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "197588958958-68n4i703ev2lai0nujpbsss551snc3dm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.doctordesh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

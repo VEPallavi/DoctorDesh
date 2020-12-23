@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context="com.doctordesh.activity.PatientConsentActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/app_gradient"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.doctordesh.customViews.RobotoMediumTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/txt_patient_consent"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.doctordesh.customViews.RobotoMediumTextView
+                android:id="@+id/tv_ccm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/light_grey"
+                android:drawableRight="@drawable/ic_info_outline_black"
+                android:padding="10dp"
+                android:text="@string/txt_chronic_care_management"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/rg_ccm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ccm"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rb_ccm_option_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/msg_i_consent_to_ccm_services"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rb_ccm_option_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/txt_i_do_not_consent_to_ccm_services" />
+
+
+            </RadioGroup>
+
+
+            <com.doctordesh.customViews.RobotoMediumTextView
+                android:id="@+id/tv_bhi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/light_grey"
+                android:drawableRight="@drawable/ic_info_outline_black"
+                android:padding="10dp"
+                android:text="@string/txt_behavioral_health_integration"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rg_ccm" />
+
+            <RadioGroup
+                android:id="@+id/rg_bhi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_bhi"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rb_bhi_option_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/msg_i_consent_to_bhi_services"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/rb_bhi_option_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="start"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="3dp"
+                    android:text="@string/txt_i_do_not_consent_to_bhi_services" />
+
+
+            </RadioGroup>
+
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_patient_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawablePadding="15dp"
+                android:hint="@string/hint_patient_name"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/green_cursor"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rg_bhi"
+
+                />
+
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_facility_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawablePadding="15dp"
+                android:hint="@string/hint_facility_name_consent"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/green_cursor"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_patient_name"
+
+                />
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_room_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawablePadding="15dp"
+                android:hint="@string/hint_room_number_consent"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/green_cursor"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_facility_name"
+
+                />
+
+            <com.doctordesh.customViews.RobotoMediumTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_patient_representive_sign"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/et_room_number"
+               android:text="@string/txt_patient_or_representative_signature"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_sign"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/light_grey_border_box"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_patient_representive_sign">
+
+                <com.github.gcacace.signaturepad.views.SignaturePad
+                    android:id="@+id/signature_pad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    app:penColor="@android:color/black" />
+
+                <com.doctordesh.customViews.RobotoMediumTextView
+                    android:id="@+id/tv_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/colorWhite"
+                    android:text="@string/txt_clear"
+                    android:textAllCaps="true"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+
+                <com.doctordesh.customViews.RobotoMediumTextView
+                    android:id="@+id/tv_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:background="@color/colorWhite"
+                    android:text="@string/text_save"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/tv_clear" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_verbal_consent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawablePadding="15dp"
+                android:hint="@string/hint_verbal_consent_given_by"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/green_cursor"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_sign"
+
+                />
+            <com.doctordesh.customViews.RobotoRegularEditText
+                android:id="@+id/et_care_navigator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawablePadding="15dp"
+                android:hint="@string/hint_care_navigator"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textCursorDrawable="@drawable/green_cursor"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_verbal_consent"
+
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.doctordesh.customViews.RobotoMediumButton
+        android:id="@+id/btn_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/text_submit"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

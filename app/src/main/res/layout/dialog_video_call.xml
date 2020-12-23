@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+>
+
+
+    <com.doctordesh.customViews.RobotoMediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/text_video_call"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_header"
+            android:textSize="15sp"
+    />
+
+    <com.doctordesh.customViews.RobotoRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/msg_note_video_call"
+            android:textColor="@color/grey"
+            android:id="@+id/tv_note_msg"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+    />
+    <com.doctordesh.customViews.RobotoRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_note_msg"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/text_provider"
+            android:textColor="@color/grey"
+            android:id="@+id/tv_txt_provider"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+    />
+    <com.doctordesh.customViews.RobotoRegularTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_txt_provider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Pan Deshmukh MD"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/tv_provider_name"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+    />
+
+    <com.doctordesh.customViews.RobotoMediumTextView
+            android:id="@+id/tv_video_call"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provider_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/text_video_call"
+            android:textAllCaps="true"
+            android:layout_marginTop="15dp"
+            android:padding="8dp"
+            android:drawablePadding="12dp"
+            android:drawableRight="@drawable/ic_video_call_popup"
+            android:textColor="@color/colorPrimary"
+
+    />
+    <com.doctordesh.customViews.RobotoMediumTextView
+            android:id="@+id/tv_message"
+            app:layout_constraintTop_toBottomOf="@+id/tv_video_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/text_message"
+            android:textAllCaps="true"
+            android:padding="8dp"
+            android:drawablePadding="12dp"
+            android:drawableRight="@drawable/ic_message_popup"
+            android:textColor="@color/colorPrimary"
+
+    />
+    <com.doctordesh.customViews.RobotoMediumTextView
+            android:id="@+id/tv_call"
+            app:layout_constraintTop_toBottomOf="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/text_call"
+            android:textAllCaps="true"
+            android:padding="8dp"
+            android:drawablePadding="12dp"
+            android:drawableRight="@drawable/ic_phone_popup"
+            android:textColor="@color/colorPrimary"
+
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

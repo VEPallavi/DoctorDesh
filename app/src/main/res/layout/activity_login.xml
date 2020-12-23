@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.LoginActivity"
+        android:background="@color/colorWhite"
+        android:fillViewport="true"
+>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"
+
+    >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    app:layout_constraintDimensionRatio="H,16:9"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:src="@drawable/app_logo"
+                    android:id="@+id/iv_image_top"
+            />
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                    android:id="@+id/et_email_id"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_image_top"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:padding="15dp"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/hint_enter_email_id"
+                    android:layout_marginTop="36dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:drawablePadding="15dp"
+                    android:textCursorDrawable="@drawable/green_cursor"
+                    android:drawableLeft="@drawable/mail"
+                    android:layout_width="0dp" android:layout_height="wrap_content"/>
+
+            <com.doctordesh.customViews.RobotoRegularEditText
+                    android:id="@+id/et_pass"
+                    android:hint="@string/hint_enter_pass"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="15dp"
+                    android:padding="15dp"
+                    android:textSize="14sp"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textCursorDrawable="@drawable/green_cursor"
+                    android:drawableLeft="@drawable/locked"
+                    app:layout_constraintTop_toBottomOf="@+id/et_email_id"
+                    android:layout_width="0dp" android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:id="@+id/iv_password_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/et_pass"
+                    app:layout_constraintBottom_toBottomOf="@+id/et_pass"
+                    app:layout_constraintRight_toRightOf="@+id/et_pass"
+                    android:src="@drawable/eye_hide"
+                    android:padding="12dp"
+            />
+
+
+            <com.doctordesh.customViews.RobotoMediumTextView
+                    android:id="@+id/tv_forgot_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_pass"
+                    android:text="@string/text_forgot_pass"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="13dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorPrimary"
+
+            />
+
+
+            <com.doctordesh.customViews.RobotoMediumButton
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/text_login"
+                    android:textSize="14sp"
+                    android:id="@+id/btn_login"
+                    android:background="@drawable/app_gradient_4"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_forgot_pass"
+                    android:layout_width="0dp" android:layout_height="wrap_content"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_txt_do_not_have_acc"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/msg_do_not_have_acc"
+                android:textSize="14sp"
+                android:gravity="bottom"
+                app:layout_constraintTop_toBottomOf="@+id/cl_center"
+                app:layout_constraintBottom_toTopOf="@+id/tv_sign_up"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+        <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_sign_up"
+                android:padding="15dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
