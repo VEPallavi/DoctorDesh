@@ -211,6 +211,8 @@
     <string name="txt_alert">Alert!</string>
     <string name="msg_no_material_found">No Material Found</string>
     <string name="msg_no_data_found">No Data Found</string>
+    <string name="txt_contact_user">Contact User</string>
+    <string name="txt_send_message">Send Message</string>
 
 
 </resources>

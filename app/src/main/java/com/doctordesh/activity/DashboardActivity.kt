@@ -101,11 +101,12 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
                 startActivity(Intent(this, SendPatientDocumentActivity::class.java))
 
-
-
             }
             R.id.cv_meditation_survey -> {
                 startActivity(Intent(this, MeditationWellnessActivity::class.java))
+            }
+            R.id.cv_contact_user ->{
+                startActivity(Intent(this, ContactUserActivity::class.java))
             }
 
         }
@@ -296,6 +297,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         cv_psychometric.setOnClickListener(this)
 cv_meditation_survey.setOnClickListener(this)
         cv_patient_document.setOnClickListener(this)
+        cv_contact_user.setOnClickListener(this)
 
 
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="5dp"
+    android:layout_margin="25dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_send_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:id="@+id/iv_message"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/ic_message_popup"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="10dp" />
+
+            <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_send_message"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_message"
+                app:layout_constraintTop_toTopOf="@+id/iv_message"
+                app:layout_constraintLeft_toRightOf="@+id/iv_message"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_call_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/ic_call"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/ic_video_call_popup"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="10dp" />
+
+            <com.doctordesh.customViews.RobotoRegularTextView
+                android:id="@+id/tv_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Call User"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/ic_call"
+                app:layout_constraintTop_toTopOf="@+id/ic_call"
+                app:layout_constraintLeft_toRightOf="@+id/ic_call"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
