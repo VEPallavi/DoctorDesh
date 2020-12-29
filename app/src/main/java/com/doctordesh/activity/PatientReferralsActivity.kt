@@ -80,7 +80,7 @@ class PatientReferralsActivity : AppCompatActivity() {
 
         if(refferalType == "2")
         {
-            et_facility_name.hint="Patient phone number"
+            et_facility_name.hint= "Facility Name" //"Patient phone number"
             et_room_number.hint="Your name, practice name, and phone number"
 
 

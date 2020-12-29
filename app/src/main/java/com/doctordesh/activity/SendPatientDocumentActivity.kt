@@ -29,7 +29,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import com.doctordesh.R
+import com.doctordesh.adapters.SendPatientDocumentAdapter
 import com.doctordesh.helpers.Utils
 import com.doctordesh.viewModels.SendPatientDocumentViewModel
 import com.itextpdf.text.Document
@@ -47,6 +49,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class SendPatientDocumentActivity : AppCompatActivity() {
 
@@ -58,6 +61,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
     var selectedDate = ""
     var file: File? = null
     var sendPatientDocumentViewModel: SendPatientDocumentViewModel? = null
+    var bitmapArrayList= ArrayList<Bitmap>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +71,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
     fun initView() {
 
-        sendPatientDocumentViewModel =
-            ViewModelProviders.of(this).get(SendPatientDocumentViewModel::class.java)
+        sendPatientDocumentViewModel = ViewModelProviders.of(this).get(SendPatientDocumentViewModel::class.java)
 
         toolbar.title = ""
 
@@ -93,6 +96,19 @@ class SendPatientDocumentActivity : AppCompatActivity() {
             openPatientDetailDialog()
 
         })
+
+        tv_add_more_image.setOnClickListener {
+            cl_add_doc.visibility = View.VISIBLE
+            iv_scanned_image.visibility = View.GONE
+            cl_add_doc.visibility = View.VISIBLE
+            hideShareButton()
+//
+//            if (checkPermission()) {/* ScanButtonClickListener(ScanConstants.OPEN_CAMERA)*/
+//                openImagePicker()
+//            } else {
+//                requestPermission()
+//            }
+        }
 
 
     }
@@ -270,7 +286,13 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
                 contentResolver.delete(uri!!, null, null)
                 iv_scanned_image.setImageBitmap(bitmap)
+                // added by pallavi
+                bitmapArrayList.add(bitmap!!)
 
+                rv_scanned_image.setHasFixedSize(true)
+                rv_scanned_image.layoutManager = GridLayoutManager(this,3)
+                var adapter = SendPatientDocumentAdapter(this, bitmapArrayList)
+                rv_scanned_image.adapter = adapter
 
                 storeImage(bitmap!!)
             } catch (e: IOException) {
@@ -337,10 +359,14 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
 
     fun showShareButton() {
+        rv_scanned_image.visibility = View.VISIBLE
+        tv_add_more_image.visibility = View.VISIBLE
         btn_submit.visibility = View.VISIBLE
     }
 
     fun hideShareButton() {
+        rv_scanned_image.visibility = View.GONE
+        tv_add_more_image.visibility = View.GONE
         btn_submit.visibility = View.GONE
     }
 

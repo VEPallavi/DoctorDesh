@@ -225,6 +225,9 @@
         <activity android:name=".activity.ContactUserActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".activity.EmployeeReceiptsActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

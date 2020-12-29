@@ -553,6 +553,44 @@
 
             </androidx.cardview.widget.CardView>
 
+
+
+            <!--  Employee Receipts-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_employee_receipt"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:visibility="visible"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_patient_document">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/satisfaction_servey_card_home_user">
+
+                    <com.doctordesh.customViews.RobotoMediumTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:text="@string/txt_employee_receipts"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
               <!--  contactUser-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_contact_user"
@@ -564,7 +602,7 @@
                 app:cardUseCompatPadding="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_patient_document">
+                app:layout_constraintTop_toBottomOf="@+id/cv_employee_receipt">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

@@ -7,50 +7,33 @@ import android.view.View
 import com.doctordesh.R
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import android.content.DialogInterface
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.doctordesh.helpers.Utils
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.iid.FirebaseInstanceId
-import androidx.transition.Fade
-import androidx.transition.TransitionSet
-import androidx.interpolator.view.animation.FastOutLinearInInterpolator
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import androidx.transition.TransitionManager
-import android.R.attr.visible
-import android.R.id.text2
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Handler
 import android.view.Gravity
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.transition.Slide
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
-import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.doctordesh.helpers.AppPreference
-import com.doctordesh.models.CredentialModel
 import com.doctordesh.models.UserModel
-import com.doctordesh.network.ApiList
-import com.doctordesh.network.ApiService
 import com.doctordesh.viewModels.DashBoardViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
 
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
@@ -104,6 +87,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.cv_meditation_survey -> {
                 startActivity(Intent(this, MeditationWellnessActivity::class.java))
+            }
+            R.id.cv_employee_receipt ->{
+                startActivity(Intent(this, EmployeeReceiptsActivity::class.java))
             }
             R.id.cv_contact_user ->{
                 startActivity(Intent(this, ContactUserActivity::class.java))
@@ -295,14 +281,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         cv_patient_consent.setOnClickListener(this)
         cv_review_provider_schedule.setOnClickListener(this)
         cv_psychometric.setOnClickListener(this)
-cv_meditation_survey.setOnClickListener(this)
+        cv_meditation_survey.setOnClickListener(this)
         cv_patient_document.setOnClickListener(this)
         cv_contact_user.setOnClickListener(this)
+        cv_employee_receipt.setOnClickListener(this)
 
 
 
-        if (AppPreference.getInstance(this).getNotificationReadStatus() != null && AppPreference.getInstance(
-                this
+        if (AppPreference.getInstance(this).getNotificationReadStatus() != null && AppPreference.getInstance(this
             ).getNotificationReadStatus()
         ) {
             tv_not_dot.visibility = View.VISIBLE
