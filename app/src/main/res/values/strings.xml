@@ -20,6 +20,9 @@
     <string name="hint_reason_referral">Explain reason for referral</string>
     <string name="hint_facility_name_consent">Facility Name</string>
     <string name="hint_room_number_consent">Room Number</string>
+    <string name="hint_employee_name">Employee Name</string>
+    <string name="hint_employee_amount">Employee Amount</string>
+    <string name="hint_employee_type">Employee Type</string>
 
 
     <string name="text_dashboard_title">Balanced Wellbeing LLC</string>
@@ -214,7 +217,9 @@
     <string name="txt_contact_user">Contact User</string>
     <string name="txt_send_message">Send Message</string>
     <string name="txt_employee_receipts">Employee Receipts</string>
-
+    <string name="txt_add_more">Add More</string>
+    <string name="text_employee_name">Employee Name</string>
+    <string name="text_employee_detail">Employee Details</string>
 
 
 </resources>

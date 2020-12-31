@@ -12,7 +12,6 @@
         android:id="@+id/tv_patient_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_patient_detail"
         android:textColor="@color/colorBlack"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -26,12 +25,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="@drawable/light_grey_border_box"
-        android:hint="@string/hint_patient_name"
         android:padding="12dp"
         android:textColor="@color/colorBlack"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_patient_detail" />
+
+    <com.doctordesh.customViews.RobotoRegularEditText
+        android:id="@+id/et_employee_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/light_grey_border_box"
+        android:padding="12dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_patient_name" />
+
+    <com.doctordesh.customViews.RobotoRegularEditText
+        android:id="@+id/et_employee_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/light_grey_border_box"
+        android:padding="12dp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_employee_type" />
 
 
     <com.doctordesh.customViews.RobotoRegularEditText
@@ -41,12 +63,10 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/light_grey_border_box"
         android:padding="12dp"
-        android:hint="@string/hint_patient_dob"
         android:textColor="@color/colorBlack"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_patient_name" />
+        app:layout_constraintTop_toBottomOf="@+id/et_employee_amount" />
 
 
     <com.doctordesh.customViews.RobotoMediumTextView

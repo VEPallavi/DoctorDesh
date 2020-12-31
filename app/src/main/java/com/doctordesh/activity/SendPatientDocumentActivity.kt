@@ -102,12 +102,6 @@ class SendPatientDocumentActivity : AppCompatActivity() {
             iv_scanned_image.visibility = View.GONE
             cl_add_doc.visibility = View.VISIBLE
             hideShareButton()
-//
-//            if (checkPermission()) {/* ScanButtonClickListener(ScanConstants.OPEN_CAMERA)*/
-//                openImagePicker()
-//            } else {
-//                requestPermission()
-//            }
         }
 
 
@@ -127,30 +121,30 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
         patientDetailDialog.show()
 
+        var tvPatientDetail = patientDetailDialog.findViewById<TextView>(R.id.tv_patient_detail)
+        tvPatientDetail.text = this.resources.getString(R.string.text_patient_detail)
 
         var etPatientName = patientDetailDialog.findViewById<EditText>(R.id.et_patient_name)
+        etPatientName.hint = this.resources.getString(R.string.hint_patient_name)
+
+        var etEmployeeType = patientDetailDialog.findViewById<EditText>(R.id.et_employee_type)
+        etEmployeeType.hint = this.resources.getString(R.string.hint_employee_type)
+        etEmployeeType.visibility = View.GONE
+
+        var etEmployeeAmount = patientDetailDialog.findViewById<EditText>(R.id.et_employee_amount)
+        etEmployeeAmount.hint = this.resources.getString(R.string.hint_employee_amount)
+        etEmployeeAmount.visibility = View.GONE
+
         var tvPatientDOB = patientDetailDialog.findViewById<EditText>(R.id.tv_patient_dob)
-
-
-
-
-
+        tvPatientDOB.hint = this.resources.getString(R.string.hint_patient_dob)
 
         var tvCancel = patientDetailDialog.findViewById<TextView>(R.id.tv_cancel)
-
-
-
         tvCancel.setOnClickListener(View.OnClickListener {
-
             patientDetailDialog.dismiss()
-
         })
 
 
         var tvSubmit = patientDetailDialog.findViewById<TextView>(R.id.tv_submit)
-
-
-
         tvSubmit.setOnClickListener(View.OnClickListener {
 
             if (etPatientName.text.toString().isEmpty()) {
@@ -161,10 +155,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
                 submitPatientDoc(etPatientName.text.toString(), tvPatientDOB.text.toString())
                 patientDetailDialog.dismiss()
             }
-
         })
-
-
     }
 
 

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -25,8 +24,6 @@
             android:textSize="16sp" />
 
     </androidx.appcompat.widget.Toolbar>
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_add_receipts"
@@ -64,8 +61,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:visibility="gone"
         android:id="@+id/rv_scanned_image"
@@ -79,7 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="150dp"/>
 
-
     <ImageView
         android:id="@+id/iv_scanned_image"
         android:layout_width="0dp"
@@ -87,7 +81,23 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"/>
+
+    <com.doctordesh.customViews.RobotoRegularTextView
+        android:visibility="gone"
+        android:id="@+id/tv_add_more_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="@string/txt_add_more"/>
 
     <com.doctordesh.customViews.RobotoMediumButton
         android:visibility="gone"

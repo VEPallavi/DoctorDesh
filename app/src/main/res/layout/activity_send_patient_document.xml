@@ -103,7 +103,7 @@
         android:textColor="@color/colorWhite"
         android:padding="10dp"
         android:textSize="14sp"
-        android:text="Add More"/>
+        android:text="@string/txt_add_more"/>
 
 
     <com.doctordesh.customViews.RobotoMediumButton
