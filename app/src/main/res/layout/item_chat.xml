@@ -60,7 +60,7 @@
             android:drawablePadding="8dp"
             android:textSize="14sp"
             android:textColor="@color/colorBlack"
-            android:background="@drawable/chat_msg_back"
+            android:background="@drawable/chat_msg_app_color_back"
 
 
     />
