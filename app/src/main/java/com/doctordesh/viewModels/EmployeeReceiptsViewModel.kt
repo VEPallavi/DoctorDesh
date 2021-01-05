@@ -32,7 +32,7 @@ class EmployeeReceiptsViewModel : ViewModel(){
         val patientname = RequestBody.create(MediaType.parse("multipart/form-data"), patientName)
         val patientDOB = RequestBody.create(MediaType.parse("multipart/form-data"), dob)
 
-        var call = apiService.sendPatientDocument(token, userID, patientname, patientDOB, document)
+        var call = apiService.sendEmployeeReceipts(token, userID, patientname, patientDOB, document)
 
         Utils.showProgressDialog(mContext)
 

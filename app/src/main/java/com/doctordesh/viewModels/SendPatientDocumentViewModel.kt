@@ -19,12 +19,7 @@ class SendPatientDocumentViewModel : ViewModel() {
     var preference: AppPreference? = null
 
 
-    fun sendPatientDocument(
-        mContext: Context,
-        patientName: String,
-        dob: String,
-        document: MultipartBody.Part
-    ): MutableLiveData<JsonObject> {
+    fun sendPatientDocument(mContext: Context, patientName: String, dob: String, document: ArrayList<MultipartBody.Part>): MutableLiveData<JsonObject> {
         sendPatientDocumentResponse=MutableLiveData()
 
         preference = AppPreference.getInstance(mContext)

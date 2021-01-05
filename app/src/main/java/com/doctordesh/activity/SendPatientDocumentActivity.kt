@@ -62,6 +62,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
     var file: File? = null
     var sendPatientDocumentViewModel: SendPatientDocumentViewModel? = null
     var bitmapArrayList= ArrayList<Bitmap>()
+    var fileArrayList= ArrayList<File>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -264,8 +265,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 
             cl_add_doc.visibility = View.GONE
-            val uri =
-                data!!.extras!!.getParcelable<Uri>(ScanConstants.SCANNED_RESULT)
+            val uri = data!!.extras!!.getParcelable<Uri>(ScanConstants.SCANNED_RESULT)
             var bitmap: Bitmap? = null
             try {
                 bitmap = if (Build.VERSION.SDK_INT < 28) {
@@ -286,6 +286,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
                 rv_scanned_image.adapter = adapter
 
                 storeImage(bitmap!!)
+
             } catch (e: IOException) {
                 hideShareButton()
                 e.printStackTrace()
@@ -300,11 +301,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
             var document = Document()
 
-
             fileName = Date().time.toString() + ".pdf"
-
-
-
 
             val mediaStorageDir = File(filesDir, "doctordesh" + File.separator + "files")
             if (!mediaStorageDir.exists()) {
@@ -314,9 +311,9 @@ class SendPatientDocumentActivity : AppCompatActivity() {
             }
 
 
-
             file=File(mediaStorageDir,fileName)
 
+            fileArrayList.add(file!!)
 
             PdfWriter.getInstance(
                 document, FileOutputStream(mediaStorageDir.path+File.separator+fileName)
@@ -324,8 +321,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
             document.open()
 
-            val image =
-                Image.getInstance(imageFile.absolutePath)  // Change image's name and extension.
+            val image = Image.getInstance(imageFile.absolutePath)  // Change image's name and extension.
 
             val scaler = ((document.getPageSize().getWidth() - document.leftMargin()
                     - document.rightMargin() - 0) / image.width) * 100; // 0 means you have no indentation. If you have any, change it.
@@ -340,11 +336,7 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
         } catch (e: java.lang.Exception) {
             hideShareButton()
-            Toast.makeText(
-                this,
-                "" + e.localizedMessage,
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this, "" + e.localizedMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -364,14 +356,19 @@ class SendPatientDocumentActivity : AppCompatActivity() {
 
     fun submitPatientDoc(patientName: String, patientDOB: String) {
 
-        var requestFile = RequestBody.create(MediaType.parse("application/pdf"), file)
-        var img = MultipartBody.Part.createFormData(
-            "patientDoc",
-            file!!.name,
-            requestFile
-        )
+       //  var requestFile = RequestBody.create(MediaType.parse("application/pdf"), file)
+       // var img = MultipartBody.Part.createFormData("patientDoc", file!!.name, requestFile)
 
-        sendPatientDocumentViewModel!!.sendPatientDocument(this, patientName, patientDOB, img)
+        var totalImageList = ArrayList<MultipartBody.Part>()
+
+        for(fileItem in fileArrayList){
+            var requestFile = RequestBody.create(MediaType.parse("application/pdf"), fileItem)
+            var part = MultipartBody.Part.createFormData("patientDoc", file!!.name, requestFile)
+            totalImageList.add(part)
+        }
+
+
+        sendPatientDocumentViewModel!!.sendPatientDocument(this, patientName, patientDOB, totalImageList)
             .observe(this,
                 androidx.lifecycle.Observer {
 

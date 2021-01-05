@@ -128,6 +128,16 @@ interface ApiService {
         @Part("provider_id") provider_id: RequestBody,
         @Part("patient_name") patient_name: RequestBody,
         @Part("dob") dob: RequestBody,
+        @Part patientDoc: ArrayList<MultipartBody.Part>
+    ): Call<JsonObject>
+
+    @Multipart
+    @POST(ApiList.EMPLOYEE_RECEIPTS_URL)
+    fun sendEmployeeReceipts(
+        @Header("x-auth") token: String,
+        @Part("provider_id") provider_id: RequestBody,
+        @Part("patient_name") patient_name: RequestBody,
+        @Part("dob") dob: RequestBody,
         @Part patientDoc: MultipartBody.Part
     ): Call<JsonObject>
 
