@@ -61,6 +61,7 @@ class EmployeeReceiptsActivity : AppCompatActivity(){
     var file: File? = null
     var employeeReceiptViewModel: EmployeeReceiptsViewModel?= null
     var bitmapArrayList= ArrayList<Bitmap>()
+    var fileArrayList= ArrayList<File>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -297,6 +298,7 @@ class EmployeeReceiptsActivity : AppCompatActivity(){
             }
 
             file=File(mediaStorageDir,fileName)
+            fileArrayList.add(file!!)
 
             PdfWriter.getInstance(
                 document, FileOutputStream(mediaStorageDir.path+File.separator+fileName)
@@ -335,16 +337,22 @@ class EmployeeReceiptsActivity : AppCompatActivity(){
     }
 
 
-    fun submitEmployeeReceipts(employeeName: String, employeeType: String, employeeAmount: String) {
+    fun submitEmployeeReceipts(employeeName: String, type: String, amount: String) {
 
-        var requestFile = RequestBody.create(MediaType.parse("application/pdf"), file)
-        var img = MultipartBody.Part.createFormData(
-            "patientDoc",
-            file!!.name,
-            requestFile
-        )
+       // var requestFile = RequestBody.create(MediaType.parse("application/pdf"), file)
+       // var img = MultipartBody.Part.createFormData("reciept", file!!.name, requestFile)
 
-        employeeReceiptViewModel!!.sendEmployeeReceipts(this, employeeName, employeeType, img)
+
+
+        var totalImageList = ArrayList<MultipartBody.Part>()
+        for(fileItem in fileArrayList){
+            var requestFile = RequestBody.create(MediaType.parse("application/pdf"), fileItem)
+            var part = MultipartBody.Part.createFormData("reciept", file!!.name, requestFile)
+            totalImageList.add(part)
+        }
+
+
+        employeeReceiptViewModel!!.sendEmployeeReceipts(this, employeeName, type, amount, totalImageList)
             .observe(this,
                 androidx.lifecycle.Observer {
 
@@ -352,6 +360,8 @@ class EmployeeReceiptsActivity : AppCompatActivity(){
                         Utils.showLog(it.toString())
                         Utils.showToast(this, it["message"].toString())
 
+                        bitmapArrayList.clear()
+                        fileArrayList.clear()
                         cl_add_receipts.visibility = View.VISIBLE
                         iv_scanned_image.visibility = View.GONE
                         hideShareButton()

@@ -136,9 +136,10 @@ interface ApiService {
     fun sendEmployeeReceipts(
         @Header("x-auth") token: String,
         @Part("provider_id") provider_id: RequestBody,
-        @Part("patient_name") patient_name: RequestBody,
-        @Part("dob") dob: RequestBody,
-        @Part patientDoc: MultipartBody.Part
+        @Part("employee_name") patient_name: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("amount") amount: RequestBody,
+        @Part reciept: ArrayList<MultipartBody.Part>
     ): Call<JsonObject>
 
 

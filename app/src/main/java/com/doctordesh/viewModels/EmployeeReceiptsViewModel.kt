@@ -21,7 +21,7 @@ class EmployeeReceiptsViewModel : ViewModel(){
 
 
 
-    fun sendEmployeeReceipts(mContext: Context, patientName: String, dob: String, document: MultipartBody.Part): MutableLiveData<JsonObject> {
+    fun sendEmployeeReceipts(mContext: Context, employeeName: String, type: String, amount: String, receiptList: ArrayList<MultipartBody.Part>): MutableLiveData<JsonObject> {
         sendEmployeeReceiptsResponse= MutableLiveData()
         preference = AppPreference.getInstance(mContext)
         val userModel = preference!!.getUserData()
@@ -29,10 +29,11 @@ class EmployeeReceiptsViewModel : ViewModel(){
         val token = preference!!.getAuthToken()
 
         val userID = RequestBody.create(MediaType.parse("multipart/form-data"), userModel!!._id)
-        val patientname = RequestBody.create(MediaType.parse("multipart/form-data"), patientName)
-        val patientDOB = RequestBody.create(MediaType.parse("multipart/form-data"), dob)
+        val employeename = RequestBody.create(MediaType.parse("multipart/form-data"), employeeName)
+        val type = RequestBody.create(MediaType.parse("multipart/form-data"), type)
+        val amount = RequestBody.create(MediaType.parse("multipart/form-data"), amount)
 
-        var call = apiService.sendEmployeeReceipts(token, userID, patientname, patientDOB, document)
+        var call = apiService.sendEmployeeReceipts(token, userID, employeename, type, amount, receiptList)
 
         Utils.showProgressDialog(mContext)
 

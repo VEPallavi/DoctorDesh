@@ -41,7 +41,7 @@ class ApiList {
 
         const val GET_SURVEYS_FROM_STAFF_URL = "user/staffServey"
         const val SEND_PATIENT_DOCUMENT_URL = "patientDocument/add_patientDocument"
-        const val EMPLOYEE_RECEIPTS_URL =""
+        const val EMPLOYEE_RECEIPTS_URL = "employeeReciept/add_employeeReciept"
 
         var ABOUT_US_URL = BASE_URL + "user/about"
         var TERMS_CONDITION_URL = BASE_URL + "user/terms-condition"

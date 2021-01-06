@@ -372,12 +372,12 @@ class SendPatientDocumentActivity : AppCompatActivity() {
             .observe(this,
                 androidx.lifecycle.Observer {
 
-
-
                     if (it != null && it.has("status") && it.get("status").asString.equals("1")) {
                         Utils.showLog(it.toString())
                         Utils.showToast(this, it["message"].toString())
 
+                        bitmapArrayList.clear()
+                        fileArrayList.clear()
 
                         cl_add_doc.visibility = View.VISIBLE
                         iv_scanned_image.visibility = View.GONE
