@@ -18,9 +18,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/app_gradient"
-    >
-        <de.hdodenhof.circleimageview.CircleImageView
+            android:background="@drawable/app_gradient">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_profile_pic"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -32,18 +37,30 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:civ_border_color="@color/colorPrimary"/>
 
-
-        <com.doctordesh.customViews.RobotoMediumTextView
+            <com.doctordesh.customViews.RobotoMediumTextView
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/iv_profile_pic"
                 android:text="MC SHER"
                 android:textSize="16sp"
                 android:layout_marginLeft="24dp"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorWhite" />
 
-        />
+            <ImageView
+                android:id="@+id/iv_delete_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_gravity="right"
+                android:padding="12dp"
+                android:src="@drawable/ic_select_all"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
 

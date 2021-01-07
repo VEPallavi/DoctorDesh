@@ -119,10 +119,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
 
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) {
 
-
-
-
-
         if(!chatList.get(position).isHeaderChecked)
         {
             if(prevDate.equals(""))
@@ -135,9 +131,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
             }
             else
             {
-
-
-
                if(prevDate.equals(sdfDay.format(Date(chatList.get(position).chatTime.toLong()))))
                {
                    holder.tvMsgDay.visibility=View.GONE
@@ -150,17 +143,10 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
 
                    holder.tvMsgDay.text=prevDate
                    holder.tvMsgDay.visibility=View.VISIBLE
-
                }
-
-
-
             }
 
-
             chatList.get(position).isHeaderChecked=true
-
-
         }
         else
         {
@@ -188,7 +174,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
     }
 
     inner class ConversationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         var msgTime: TextView
         var userName: TextView
         var userMsg: TextView
@@ -198,10 +183,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
 
 
         init {
-
-
-
-
             msgTime = view.findViewById(R.id.msg_time)
             userName = view.findViewById(R.id.user_name)
             userMsg = view.findViewById(R.id.user_msg)
@@ -210,9 +191,8 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
             ivMessageStatus = view.findViewById(R.id.iv_message_status)
         }
 
+
         fun bind(chatUsersModel: ChatUsersModel) {
-
-
             var sdf = SimpleDateFormat("hh:mm a")
             msgTime.text = sdf.format(Date(chatUsersModel.chatTime.toLong()))
 
@@ -241,7 +221,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
                     )
 
                 }
-
             }
 
             if (chatUsersModel.isMessageRead.equals("0"))
@@ -277,11 +256,6 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
 
             itemView.setOnClickListener(View.OnClickListener {
 
-
-
-
-
-
                 mContext.startActivity(
                     Intent(mContext, ChatActivity::class.java).putExtra(
                         "chatUser",
@@ -312,34 +286,21 @@ fun updateChatItem(position: Int,chat: ChatUsersModel)
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog!!.setContentView(R.layout.dialog_delete_chat)
         dialog!!.show()
-        dialog!!.getWindow()!!.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+        dialog!!.getWindow()!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
 
         var tvYes = dialog.findViewById<TextView>(R.id.tv_yes)
         tvYes.setOnClickListener(View.OnClickListener {
             onDeleteChatListener.onDeleteChat(chatList.get(position), position)
-
             dialog.dismiss()
-
-
-
         })
 
 
         var tvNo = dialog.findViewById<TextView>(R.id.tv_no)
         tvNo.setOnClickListener(View.OnClickListener {
 
-
             dialog.dismiss()
-
-
-
         })
-
-
 
     }
 

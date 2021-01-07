@@ -38,6 +38,10 @@ interface ApiService {
     @GET(ApiList.GET_ALL_PROVIDERS_URL)
     fun getAllProviders(): Call<JsonObject>
 
+    @GET(ApiList.GET_ALL_CONTACT_USER_LIST_URL)
+    fun getAllContactUserList(): Call<JsonObject>
+
+
 
     @GET(ApiList.GET_PSYCH_CATEGORIES_URL)
     fun getPsychCategories(@Header("x-auth") token: String): Call<JsonObject>

@@ -12,18 +12,29 @@ import retrofit2.Call
 import retrofit2.Response
 
 class ContactUserViewModel : ViewModel(){
-
-    var contactUserData: MutableLiveData<JsonObject>? = null
+    var contactUserListResult: MutableLiveData<JsonObject>? = null
 
 
     fun getData(mContext: Context): MutableLiveData<JsonObject> {
-        contactUserData = MutableLiveData()
+        contactUserListResult = MutableLiveData()
+
         var apiService = ApiClient.getClient().create(ApiService::class.java)
-        var preference = AppPreference.getInstance(mContext)
-        val token = preference.getAuthToken()
+        var call = apiService.getAllContactUserList()
+        Utils.showProgressDialog(mContext)
 
-
-        return contactUserData!!
+        call.enqueue(object: retrofit2.Callback<JsonObject>{
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                Utils.hideProgressDialog()
+                Utils.showLog(t.message!!)
+            }
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                Utils.hideProgressDialog()
+                if(response!= null && response.body()!= null){
+                    contactUserListResult!!.value = response.body()
+                }
+            }
+        })
+        return contactUserListResult!!
     }
 
 

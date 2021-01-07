@@ -512,6 +512,14 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
         }
+
+
+        iv_delete_chat.setOnClickListener {
+         //   openDeleteChatDialog(position)
+        }
+
+
+
         iv_send.setOnClickListener(View.OnClickListener {
 
             if (!et_message.text.toString().equals("")) {
@@ -538,6 +546,31 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
         })
 
+
+    }
+
+    fun openDeleteChatDialog(position: Int)
+    {
+
+        var dialog = Dialog(this)
+        dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog!!.setContentView(R.layout.dialog_delete_chat)
+        dialog!!.show()
+        dialog!!.getWindow()!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+
+        var tvYes = dialog.findViewById<TextView>(R.id.tv_yes)
+        tvYes.setOnClickListener(View.OnClickListener {
+          //  onDeleteChatListener.onDeleteChat(chatList.get(position), position)
+            dialog.dismiss()
+        })
+
+
+        var tvNo = dialog.findViewById<TextView>(R.id.tv_no)
+        tvNo.setOnClickListener(View.OnClickListener {
+
+            dialog.dismiss()
+        })
 
     }
 

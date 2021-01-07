@@ -18,8 +18,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.doctordesh.R
 import com.doctordesh.activity.ChatActivity
 import com.doctordesh.activity.ContactUserActivity
+import com.doctordesh.helpers.Utils
+import com.doctordesh.models.ContactUserItemList
 
-class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayList<String>) : RecyclerView.Adapter<ContactUserAdapter.ContactUserViewHolder>(){
+class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayList<ContactUserItemList>) : RecyclerView.Adapter<ContactUserAdapter.ContactUserViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactUserAdapter.ContactUserViewHolder {
         return ContactUserViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_survey,parent,false))
@@ -31,26 +33,27 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
 
     override fun onBindViewHolder(holder: ContactUserAdapter.ContactUserViewHolder, position: Int) {
 
-        holder.tvSurveyTitle.text = contactUserDataList.get(position)
-        holder.iv_right_arrow.visibility = View.GONE
 
+        holder.iv_right_arrow.visibility = View.GONE
         holder.bindItems(contactUserDataList.get(position))
     }
 
 
     inner class ContactUserViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var tvSurveyTitle: TextView
+        var tvName: TextView
         var clMainItem: ConstraintLayout
         var iv_right_arrow: ImageView
 
         init {
-            tvSurveyTitle = view.findViewById(R.id.tv_survey_title)
+            tvName = view.findViewById(R.id.tv_survey_title)
             clMainItem = view.findViewById(R.id.cl_item)
             iv_right_arrow = view.findViewById(R.id.iv_right_arrow)
         }
 
-        fun bindItems(dataModel: String){
-            tvSurveyTitle.text = dataModel
+        fun bindItems(dataModel: ContactUserItemList){
+            iv_right_arrow.visibility = View.GONE
+
+            tvName.text = dataModel.firstName + " "+dataModel.lastName
 
             clMainItem.setOnClickListener {
                 var contactUserDialog = Dialog(mContext)
@@ -71,10 +74,16 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
                 }
 
                 clCallUser.setOnClickListener {
-                    var phoneNumber = "+917355228343"
-                    val intent = Intent(Intent.ACTION_DIAL)
-                    intent.data = Uri.parse("tel:" + phoneNumber)
-                    mContext.startActivity(intent)
+
+                    if(!dataModel.phoneNumber.equals("")){
+                        var phoneNumber = dataModel.phoneNumber
+                        val intent = Intent(Intent.ACTION_DIAL)
+                        intent.data = Uri.parse("tel:" + phoneNumber)
+                        mContext.startActivity(intent)
+                    }
+                    else{
+                        Utils.showToast(mContext, "No phone number found")
+                    }
                 }
 
             }

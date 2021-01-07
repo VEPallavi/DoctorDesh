@@ -31,6 +31,7 @@ class ApiList {
         const val GET_MEDITATION_SURVEY_URL = "user/meditationServey"
         const val SENT_PATIENT_CONSENT_URL = "patientConstent/add_constent"
         const val GET_ALL_PROVIDERS_URL = "user/providers_listing"
+        const val GET_ALL_CONTACT_USER_LIST_URL ="user/users"
         const val GET_PROVIDER_SCHEDULE_URL = "storeTimings/providers_timing"
         const val GET_STAFF_MEMBERS_URL = "contact/contactStaff"
         const val GET_PSYCH_CATEGORIES_URL = "questionsCategories/get_question_caegories"
