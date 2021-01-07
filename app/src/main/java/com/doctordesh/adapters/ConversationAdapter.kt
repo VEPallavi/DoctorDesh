@@ -45,33 +45,20 @@ class ConversationAdapter(var mContext: Context,var onDeleteChatListener: OnDele
         chatList=SortedList(ChatUsersModel::class.java,object : SortedListAdapterCallback<ChatUsersModel>(this){
             override fun areItemsTheSame(item1: ChatUsersModel?, item2: ChatUsersModel?): Boolean {
 
-
                 return item1!!.chatId == item2!!.chatId
-
 
             }
 
             override fun compare(o1: ChatUsersModel?, o2: ChatUsersModel?): Int {
 
-
                 return (o2!!.chatTime.toLong() - o1!!.chatTime.toLong()).toInt()
-
             }
 
-            override fun areContentsTheSame(
-                oldItem: ChatUsersModel?,
-                newItem: ChatUsersModel?
-            ): Boolean {
+            override fun areContentsTheSame(oldItem: ChatUsersModel?, newItem: ChatUsersModel?): Boolean {
                return oldItem == newItem
-
             }
-
 
         })
-
-
-
-
 
     }
 

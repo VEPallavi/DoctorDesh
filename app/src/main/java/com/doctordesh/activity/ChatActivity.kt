@@ -15,14 +15,12 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.provider.MediaStore
-import android.util.LayoutDirection
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
@@ -37,7 +35,6 @@ import com.google.gson.reflect.TypeToken
 
 import kotlinx.android.synthetic.main.activity_chat.*
 import java.util.*
-import androidx.annotation.NonNull
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -54,17 +51,14 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.*
 import com.google.firebase.firestore.*
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 
-import droidninja.filepicker.FilePickerBuilder
 import java.io.*
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 
@@ -407,6 +401,11 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
                   }
               })
   */
+
+
+            // pallavi
+
+
             mDatabase = FirebaseDatabase.getInstance().getReference("messages")
                 .child(user!!._id + "-" + provider!!._id)
             mMyDatabaseUser = FirebaseDatabase.getInstance().getReference("users").child(user!!._id)
@@ -515,7 +514,12 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
         iv_delete_chat.setOnClickListener {
-         //   openDeleteChatDialog(position)
+            if(chatMessages.size >0){
+                openDeleteChatDialog(chatUser)
+            }
+            else{
+               Utils.showToast(this, "No chat available")
+            }
         }
 
 
@@ -549,7 +553,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
     }
 
-    fun openDeleteChatDialog(position: Int)
+    fun openDeleteChatDialog(chatUser: ChatUsersModel?)
     {
 
         var dialog = Dialog(this)
@@ -562,6 +566,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
         var tvYes = dialog.findViewById<TextView>(R.id.tv_yes)
         tvYes.setOnClickListener(View.OnClickListener {
           //  onDeleteChatListener.onDeleteChat(chatList.get(position), position)
+            deleteChatMessages(chatUser!!)
             dialog.dismiss()
         })
 
@@ -709,12 +714,12 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
         } else {
 
-
+               //  change by pallavi  isMessageRead change to 1
             var chatUser1 = ChatUsersModel(
                 chatUser!!.chatId,
                 chat.message,
                 chat.messageTime,
-                "0",
+                "1",
                 chat.messageType,
                 chat.imageUrl,
                 chatUser!!.name,
@@ -730,12 +735,12 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
             mMyDatabaseUser.child(chatUser!!.providerId).setValue(chatUser1)
 
-
+//  change by pallavi  isMessageRead change to 1
             var chatUser2 = ChatUsersModel(
                 chatUser!!.chatId,
                 chat.message,
                 chat.messageTime,
-                "0",
+                "1",
                 chat.messageType,
                 chat.messageType,
                 user!!.firstName,
@@ -1688,5 +1693,15 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
         file.delete()
     }
 
+
+
+    fun deleteChatMessages(chatUser: ChatUsersModel) {
+        mDatabase = FirebaseDatabase.getInstance().getReference("messages")
+        mDatabase.child(chatUser!!.chatId).removeValue()
+        chatMessages.clear()
+        chatListAdapter?.notifyDataSetChanged()
+        Utils.showToast(this, "Conversation deleted successfully.")
+
+    }
 
 }

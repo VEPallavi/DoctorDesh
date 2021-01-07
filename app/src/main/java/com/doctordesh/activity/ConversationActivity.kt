@@ -219,7 +219,7 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
 
                     //addItemInSortedOrder(chatUsersModel)
 
-                    // conversationAdpter!!.notifyDataSetChanged()
+                    // pconversationAdpter!!.notifyDataSetChanged()
                 } catch (e: Exception) {
                     Log.e("CallMe4", "catch called")
                     e.printStackTrace()
@@ -243,14 +243,11 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
 
     fun deleteChatMessages(chatUser: ChatUsersModel) {
 
-
         var mChatDatabase = FirebaseDatabase.getInstance().getReference("messages")
 
-  
         mChatDatabase.child(chatUser!!.chatId).removeValue()
 
         Utils.showToast(this, "Conversation deleted successfully.")
-
 
     }
 
