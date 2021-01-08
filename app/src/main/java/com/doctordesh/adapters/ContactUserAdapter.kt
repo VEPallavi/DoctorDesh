@@ -33,9 +33,9 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
 
     override fun onBindViewHolder(holder: ContactUserAdapter.ContactUserViewHolder, position: Int) {
 
-
+         var  dataList = contactUserDataList.get(position)
         holder.iv_right_arrow.visibility = View.GONE
-        holder.bindItems(contactUserDataList.get(position))
+        holder.bindItems(dataList)
     }
 
 

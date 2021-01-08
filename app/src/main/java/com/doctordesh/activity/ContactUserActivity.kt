@@ -10,7 +10,6 @@ import com.doctordesh.R
 import com.doctordesh.adapters.ContactUserAdapter
 import com.doctordesh.helpers.Utils
 import com.doctordesh.models.ContactUserItemList
-import com.doctordesh.models.NotificationsItem
 import com.doctordesh.viewModels.ContactUserViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -53,7 +52,7 @@ class ContactUserActivity : AppCompatActivity(){
                 if(it.has("status") && it.get("status").asString.equals("1")){
 
                     if(it.has("payload") &&  it.get("payload") is JsonArray){
-                        val type = object : TypeToken<List<NotificationsItem>>() {}.type
+                        val type = object : TypeToken<List<ContactUserItemList>>() {}.type
                         contactUserItemList = Gson().fromJson<ArrayList<ContactUserItemList>>(it.get("payload").toString(), type)
 
                         if(contactUserItemList != null && contactUserItemList!!.size >0){
