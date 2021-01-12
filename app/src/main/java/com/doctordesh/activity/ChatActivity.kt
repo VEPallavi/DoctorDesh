@@ -507,6 +507,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
               })*/
             registerChildListener()
 
+
             updateMessageReadStatus()
 
 
@@ -515,10 +516,10 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
         iv_delete_chat.setOnClickListener {
             if(chatMessages.size >0){
-                openDeleteChatDialog(chatUser)
+               // openDeleteChatDialog(chatUser)
             }
             else{
-               Utils.showToast(this, "No chat available")
+              // Utils.showToast(this, "No chat available")
             }
         }
 

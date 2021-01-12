@@ -6,6 +6,7 @@ class UserModel(
     var lastName: String,
     var credentials: String,
     var email: String,
+    var phoneNumber: String,
     var deviceToken: String,
     var profilePic: String,
     var type: String

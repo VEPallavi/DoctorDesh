@@ -239,6 +239,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
             et_name.setText(user!!.firstName + " " + user!!.lastName)
             et_credentials.setText(user!!.credentials)
             et_email.setText(user!!.email)
+            et_phone_number.setText(user!!.phoneNumber)
             Glide.with(this)
                 .load(user!!.profilePic)
                 .apply(RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.placeholder))
@@ -251,10 +252,12 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
         et_credentials.keyListener = null
         et_email.keyListener = null
         et_name.keyListener = null
+        et_phone_number.keyListener= null
 
         et_credentials.isFocusable = false
         et_email.isFocusable = false
         et_name.isFocusable = false
+        et_phone_number.isFocusable = false
         tv_version.text = Utils.getAppVersion(this)
         toolbar.setNavigationOnClickListener { finish() }
         iv_image_picker.setOnClickListener(this)
@@ -666,10 +669,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
         editProfileDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         editProfileDialog!!.setContentView(R.layout.dialog_edit_profile)
         editProfileDialog!!.show()
-        editProfileDialog!!.window!!.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+        editProfileDialog!!.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
         editProfileDialog.show()
 
@@ -679,12 +679,14 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
         var llPassword = editProfileDialog.findViewById<LinearLayout>(R.id.ll_password)
         var etOldPassword = editProfileDialog.findViewById<EditText>(R.id.et_current_password)
         var etNewPassword = editProfileDialog.findViewById<EditText>(R.id.et_new_password)
+        var etPhoneNumber = editProfileDialog.findViewById<EditText>(R.id.et_phone_number)
 
 
 
         if (user != null) {
             etFirstName.setText(user!!.firstName)
             etLastName.setText(user!!.lastName)
+            etPhoneNumber.setText(user!!.phoneNumber)
         }
 
 
@@ -739,7 +741,12 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
             } else if (etLastName.text!!.length < 2) {
                 Utils.showToast(this, resources.getString(R.string.msg_invalid_name))
 
-            } else if (selectedCredential!!._id.equals("00")) {
+            }
+            else if (etPhoneNumber.text!!.length < 6) {
+                Utils.showToast(this, resources.getString(R.string.msg_invalid_phone_number))
+
+            }
+            else if (selectedCredential!!._id.equals("00")) {
                 Utils.showToast(this, resources.getString(R.string.msg_invalid_credential))
 
             } else if (swPassword.isChecked && etOldPassword.text!!.length == 0) {
@@ -757,6 +764,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                     this,
                     etFirstName.text.toString(),
                     etLastName.text.toString(),
+                    "+1"+etPhoneNumber.text.toString(),
                     selectedCredential!!.credential_type,
                     user!!.email,
                     etOldPassword.text.toString(),
@@ -810,6 +818,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
             et_name.setText(user!!.firstName + " " + user!!.lastName)
             et_credentials.setText(user!!.credentials)
             et_email.setText(user!!.email)
+            et_phone_number.setText(user!!.phoneNumber)
             Glide.with(this)
                 .load(user!!.profilePic)
                 .apply(RequestOptions().placeholder(R.drawable.placeholder).error(R.drawable.placeholder))

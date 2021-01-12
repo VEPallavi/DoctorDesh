@@ -21,7 +21,7 @@ class ProfileViewModel : ViewModel() {
     private var profilePicResult: MutableLiveData<JsonObject>? = null
     var preference: AppPreference? = null
 
-    fun updateProfile(mContext: Context, firstName: String, lastName: String, credentials: String, email: String,password: String, newPassword: String): MutableLiveData<JsonObject> {
+    fun updateProfile(mContext: Context, firstName: String, lastName: String, phoneNumber: String, credentials: String, email: String,password: String, newPassword: String): MutableLiveData<JsonObject> {
 
         preference = AppPreference.getInstance(mContext)
         val userModel = preference!!.getUserData()
@@ -39,6 +39,8 @@ class ProfileViewModel : ViewModel() {
             params.put("firstName", firstName)
         if (!lastName.equals(""))
             params.put("lastName", lastName)
+        if(!phoneNumber.equals(""))
+            params.put("phoneNumber",phoneNumber)
         if (!credentials.equals(""))
             params.put("credentials", credentials)
         if (!email.equals(""))

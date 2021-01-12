@@ -20,6 +20,7 @@ import com.doctordesh.activity.ChatActivity
 import com.doctordesh.activity.ContactUserActivity
 import com.doctordesh.helpers.Utils
 import com.doctordesh.models.ContactUserItemList
+import com.google.gson.Gson
 
 class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayList<ContactUserItemList>) : RecyclerView.Adapter<ContactUserAdapter.ContactUserViewHolder>(){
 
@@ -71,6 +72,14 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
                 clSendMessage.setOnClickListener {
                     contactUserDialog.dismiss()
                     mContext.startActivity(Intent(mContext, ChatActivity::class.java))
+
+                    mContext.startActivity(
+                        Intent(mContext, ChatActivity::class.java).putExtra(
+                            "chatUser",
+                            Gson().toJson(contactUserDataList.get(position))
+                        )
+                    )
+
                 }
 
                 clCallUser.setOnClickListener {
