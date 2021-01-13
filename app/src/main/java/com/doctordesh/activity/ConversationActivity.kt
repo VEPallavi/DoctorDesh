@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SortedList
 import com.doctordesh.R
@@ -27,7 +28,7 @@ import kotlin.collections.ArrayList
 class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.SectionCallback,
     OnDeleteChatListener {
     override fun onDeleteChat(chatUser: ChatUsersModel, pos: Int) {
-        mDatabase.child(chatUser.providerId).removeValue()
+        mDatabase.child(chatUser.providerId!!).removeValue()
 
         conversationAdpter!!.removeItem(pos)
         deleteChatMessages(chatUser)
@@ -64,6 +65,7 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
         setContentView(R.layout.activity_conversation)
 
         initView()
+        NotificationManagerCompat.from(this).cancel(0)
 
     }
 
@@ -132,7 +134,7 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
                     val chatTime = dataSnapshot.child("chatTime").getValue(String::class.java)!!
                     val isMessageRead =
                         dataSnapshot.child("messageRead").getValue(String::class.java)!!
-                    val senderPic = dataSnapshot.child("pic").getValue(String::class.java)!!
+                    val senderPic = dataSnapshot.child("pic").getValue(String::class.java)?.let { it }
 
                     val messageType =
                         dataSnapshot.child("messageType").getValue(String::class.java)!!
@@ -185,7 +187,7 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
                     val chatTime = dataSnapshot.child("chatTime").getValue(String::class.java)!!
                     val isMessageRead =
                         dataSnapshot.child("messageRead").getValue(String::class.java)!!
-                    val senderPic = dataSnapshot.child("pic").getValue(String::class.java)!!
+                    val senderPic = dataSnapshot.child("pic").getValue(String::class.java)?.let { it }
 
                     val messageType =
                         dataSnapshot.child("messageType").getValue(String::class.java)!!
@@ -245,7 +247,7 @@ class ConversationActivity : AppCompatActivity(), RecyclerSectionItemDecoration.
 
         var mChatDatabase = FirebaseDatabase.getInstance().getReference("messages")
 
-        mChatDatabase.child(chatUser!!.chatId).removeValue()
+        mChatDatabase.child(chatUser!!.chatId!!).removeValue()
 
         Utils.showToast(this, "Conversation deleted successfully.")
 

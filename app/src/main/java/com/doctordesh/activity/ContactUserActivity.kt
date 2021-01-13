@@ -10,6 +10,7 @@ import com.doctordesh.R
 import com.doctordesh.adapters.ContactUserAdapter
 import com.doctordesh.helpers.Utils
 import com.doctordesh.models.ContactUserItemList
+import com.doctordesh.models.ProviderModel
 import com.doctordesh.viewModels.ContactUserViewModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_contact_user.toolbar
 
 class ContactUserActivity : AppCompatActivity(){
     var viewModel: ContactUserViewModel?= null
-    var contactUserItemList: ArrayList<ContactUserItemList>? = null
+    var contactUserItemList: ArrayList<ProviderModel>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +53,8 @@ class ContactUserActivity : AppCompatActivity(){
                 if(it.has("status") && it.get("status").asString.equals("1")){
 
                     if(it.has("payload") &&  it.get("payload") is JsonArray){
-                        val type = object : TypeToken<List<ContactUserItemList>>() {}.type
-                        contactUserItemList = Gson().fromJson<ArrayList<ContactUserItemList>>(it.get("payload").toString(), type)
+                        val type = object : TypeToken<List<ProviderModel>>() {}.type
+                        contactUserItemList = Gson().fromJson<ArrayList<ProviderModel>>(it.get("payload").toString(), type)
 
                         if(contactUserItemList != null && contactUserItemList!!.size >0){
                             rv_contact_user_list.adapter= ContactUserAdapter(this, contactUserItemList!!)

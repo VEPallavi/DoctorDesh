@@ -39,7 +39,9 @@ interface ApiService {
     fun getAllProviders(): Call<JsonObject>
 
     @GET(ApiList.GET_ALL_CONTACT_USER_LIST_URL)
-    fun getAllContactUserList(): Call<JsonObject>
+    fun getAllContactUserList(
+        @Header("x-auth") token: String
+    ): Call<JsonObject>
 
 
 

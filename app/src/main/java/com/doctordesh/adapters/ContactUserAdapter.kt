@@ -20,9 +20,11 @@ import com.doctordesh.activity.ChatActivity
 import com.doctordesh.activity.ContactUserActivity
 import com.doctordesh.helpers.Utils
 import com.doctordesh.models.ContactUserItemList
+import com.doctordesh.models.ProviderModel
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_message_provider.*
 
-class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayList<ContactUserItemList>) : RecyclerView.Adapter<ContactUserAdapter.ContactUserViewHolder>(){
+class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayList<ProviderModel>) : RecyclerView.Adapter<ContactUserAdapter.ContactUserViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactUserAdapter.ContactUserViewHolder {
         return ContactUserViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_survey,parent,false))
@@ -51,7 +53,7 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
             iv_right_arrow = view.findViewById(R.id.iv_right_arrow)
         }
 
-        fun bindItems(dataModel: ContactUserItemList){
+        fun bindItems(dataModel: ProviderModel){
             iv_right_arrow.visibility = View.GONE
 
             tvName.text = dataModel.firstName + " "+dataModel.lastName
@@ -71,13 +73,11 @@ class ContactUserAdapter(var mContext: Context, var contactUserDataList: ArrayLi
 
                 clSendMessage.setOnClickListener {
                     contactUserDialog.dismiss()
-                    mContext.startActivity(Intent(mContext, ChatActivity::class.java))
-
                     mContext.startActivity(
                         Intent(mContext, ChatActivity::class.java).putExtra(
-                            "chatUser",
+                            "provider",
                             Gson().toJson(contactUserDataList.get(position))
-                        )
+                        ).putExtra("patient_detail", "")
                     )
 
                 }

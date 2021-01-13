@@ -309,7 +309,12 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
         if (intent != null && intent.hasExtra("provider")) {
 
-            patientDetail = intent.getStringExtra("patient_detail")
+            try {
+                patientDetail = intent.getStringExtra("patient_detail")
+            }catch (e: Exception){
+               e.printStackTrace()
+            }
+
 
 
             val type = object : TypeToken<ProviderModel>() {}.type
@@ -483,11 +488,11 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
             mDatabase =
-                FirebaseDatabase.getInstance().getReference("messages").child(chatUser!!.chatId)
+                FirebaseDatabase.getInstance().getReference("messages").child(chatUser!!.chatId!!)
             mMyDatabaseUser =
-                FirebaseDatabase.getInstance().getReference("users").child(chatUser!!.userId)
+                FirebaseDatabase.getInstance().getReference("users").child(chatUser!!.userId!!)
             mUserDatabaseUser =
-                FirebaseDatabase.getInstance().getReference("users").child(chatUser!!.providerId)
+                FirebaseDatabase.getInstance().getReference("users").child(chatUser!!.providerId!!)
 
 
             /*  valueEventListener = mDatabase.addValueEventListener(object : ValueEventListener {
@@ -615,11 +620,11 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
             if (chatUser!!.userId.equals(user!!._id)) {
                 chat.senderName = user!!.firstName + " " + user!!.lastName
 
-                chat.recieverName = chatUser!!.name
+                chat.recieverName = chatUser!!.name!!
 
 
             } else {
-                chat.recieverName = chatUser!!.name
+                chat.recieverName = chatUser!!.name!!
 
                 chat.senderName = user!!.firstName + " " + user!!.lastName
             }
@@ -660,7 +665,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
                 user!!._id + "-" + provider!!._id,
                 chat.message,
                 chat.messageTime,
-                "0",
+                "1",
                 chat.messageType,
                 chat.imageUrl,
                 provider!!.firstName,
@@ -734,7 +739,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
 
-            mMyDatabaseUser.child(chatUser!!.providerId).setValue(chatUser1)
+            mMyDatabaseUser.child(chatUser!!.providerId!!).setValue(chatUser1)
 
 //  change by pallavi  isMessageRead change to 1
             var chatUser2 = ChatUsersModel(
@@ -756,7 +761,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
 
-            mUserDatabaseUser.child(chatUser!!.userId).setValue(chatUser2)
+            mUserDatabaseUser.child(chatUser!!.userId!!).setValue(chatUser2)
 
             chatUser!!.deviceToken?.let {
                 sendNotificationToUser(
@@ -1625,7 +1630,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
 
-        mMyDatabaseUser.child(chatUser!!.providerId).setValue(chatUser1)
+        mMyDatabaseUser.child(chatUser!!.providerId!!).setValue(chatUser1)
 
 
         var chatUser2 = ChatUsersModel(
@@ -1645,7 +1650,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
 
-        mUserDatabaseUser.child(chatUser!!.userId).setValue(chatUser2)
+        mUserDatabaseUser.child(chatUser!!.userId!!).setValue(chatUser2)
 
 
     }
@@ -1662,9 +1667,9 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
 
             if (chatUser!!.userId.equals(user!!._id))
-                id = chatUser!!.providerId
+                id = chatUser!!.providerId!!
             else
-                id = chatUser!!.userId
+                id = chatUser!!.userId!!
         }
 
         chatViewModel!!.sendNotification(this, id, userName, userMessage, deviceToken)
@@ -1698,7 +1703,7 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
 
     fun deleteChatMessages(chatUser: ChatUsersModel) {
         mDatabase = FirebaseDatabase.getInstance().getReference("messages")
-        mDatabase.child(chatUser!!.chatId).removeValue()
+        mDatabase.child(chatUser!!.chatId!!).removeValue()
         chatMessages.clear()
         chatListAdapter?.notifyDataSetChanged()
         Utils.showToast(this, "Conversation deleted successfully.")
