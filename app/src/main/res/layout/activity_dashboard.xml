@@ -571,7 +571,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/satisfaction_servey_card_home_user">
+                    android:background="@drawable/employee_receipts_icon">
 
                     <com.doctordesh.customViews.RobotoMediumTextView
                         android:layout_width="0dp"
@@ -607,7 +607,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/satisfaction_servey_card_home_user">
+                    android:background="@drawable/contact_receipts_icon">
 
                     <com.doctordesh.customViews.RobotoMediumTextView
                         android:layout_width="0dp"

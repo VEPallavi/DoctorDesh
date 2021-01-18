@@ -408,7 +408,6 @@ class ChatActivity : AppCompatActivity(), View.OnClickListener,
   */
 
 
-            // pallavi
 
 
             mDatabase = FirebaseDatabase.getInstance().getReference("messages")

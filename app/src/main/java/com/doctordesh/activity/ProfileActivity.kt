@@ -583,6 +583,7 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+
         var height = options.outHeight;
         var width = options.outWidth;
         var inSampleSize = 1;
@@ -825,7 +826,6 @@ class ProfileActivity : AppCompatActivity(), View.OnClickListener {
                 .into(profile_image)
 
         }
-
 
     }
 
