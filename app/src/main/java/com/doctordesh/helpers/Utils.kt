@@ -165,11 +165,12 @@ class Utils {
         }
 
 
+
         fun getPsychometricSeverity(scaleName: String, totalScore: Int): String {
             var severity = ""
 
             when (scaleName) {
-                "audit" -> {
+                "audit (alcohol screening)" -> {
                     when {
                         totalScore in 8..15 -> severity =
                                 //"Advised to focus on reduction of hazardous drinking"
@@ -183,14 +184,14 @@ class Utils {
                     }
 
                 }
-                "bims and instructions" -> {
+                "bims (cognitive screening)" -> {
                     when (totalScore) {
                         in 0..7 -> severity = "Severe impairment"
                         in 8..12 -> severity = "Moderately impaired"
                         in 13..15 -> severity = "Cognitively intact"
                     }
                 }
-                "bsds2" -> {
+                "bsds (bipolar screening)" -> {
                     when (totalScore) {
                         in 0..6 -> severity = "Highly unlikely probability of bipolar"
                         in 7..12 -> severity = "Low probability of bipolar"
@@ -198,14 +199,22 @@ class Utils {
                         in 20..25 -> severity = "High probability of bipolar"
                     }
                 }
-                "btq and scoring" -> ""
-                "cns_ls" -> when {
-
-                    totalScore in 1..12 -> severity = "unlikely pseudobulbar affect"
-                    totalScore in 13..16 -> severity = "possibility of pseudobulbar affect"
-                    (totalScore > 17) -> severity = "likely pseudobulbar affect"
+                "btq (trauma screening)" -> {
+                    when {
+                        totalScore in 1..12 -> severity = "unlikely pseudobulbar affect"
+                        totalScore in 13..16 -> severity = "possibility of pseudobulbar affect"
+                        (totalScore > 17) -> severity = "likely pseudobulbar affect"
+                    }
                 }
-                "dast-english" -> {
+                "cns_ls (pba screening)" -> {
+                    when {
+                        totalScore in 1..12 -> severity = "unlikely pseudobulbar affect"
+                        totalScore in 13..16 -> severity = "possibility of pseudobulbar affect"
+                        (totalScore > 17) -> severity = "likely pseudobulbar affect"
+                    }
+                }
+
+                "dast (drug abuse screening)" -> {
                     when {
                         (totalScore == 0) -> severity = "Healthy"
                         totalScore in 1..2 -> severity = "Risky"
@@ -213,7 +222,7 @@ class Utils {
                         (totalScore > 6) -> severity = "Severe"
                     }
                 }
-                "fagerstrom_test" -> {
+                "faggerstorm (smoking screening)" -> {
                     when {
                         totalScore in 1..2 -> severity = "Low dependence"
                         totalScore in 3..4 -> severity = "Low to moderate dependence"
@@ -221,14 +230,14 @@ class Utils {
                         (totalScore > 6) -> severity = "Severe dependence"
                     }
                 }
-                "gad7" -> {
+                "gad7 (anxiety screening)" -> {
                     when (totalScore) {
                         in 0..5 -> severity = "Normal"
                         in 6..10 -> severity = "Mild anxiety"
                         in 11..15 -> severity = "Moderate anxiety"
                     }
                 }
-                "gds" -> {
+                "gds (geriatric depression screening)" -> {
                     when {
                         totalScore in 0..5 -> severity = "Not suggestive of depression"
                         totalScore in 6..10 -> severity =
@@ -237,7 +246,7 @@ class Utils {
                             "Almost always indicative of depression, most likely need treatment"
                     }
                 }
-                "pcl" -> {
+                "pcl (ptsd screening)" -> {
                     when {
                         totalScore in 1..2 -> severity = "Below Moderately"
                         totalScore in 3..5 -> severity = "Moderately or above"
@@ -245,7 +254,7 @@ class Utils {
 
                     }
                 }
-                "phq-9 scale" -> {
+                "phq9 (depression screening)" -> {
                     when (totalScore) {
                         in 0..4 -> severity = "Minimal depression"
                         in 5..9 -> severity = "Mild depression"
@@ -284,6 +293,132 @@ class Utils {
             return severity;
 
         }
+
+
+
+
+
+
+
+//        fun getPsychometricSeverity(scaleName: String, totalScore: Int): String {
+//            var severity = ""
+//
+//            when (scaleName) {
+//                "audit" -> {
+//                    when {
+//                        totalScore in 8..15 -> severity =
+//                                //"Advised to focus on reduction of hazardous drinking"
+//                            "Mild"
+//                        totalScore in 16..19 -> severity =
+//                                //"Brief counselling and continued monitoring"
+//                            "Moderate"
+//                        (totalScore > 20) -> severity =
+//                                //"Warrant further diagnostic evaluation for alcohol dependence"
+//                            "Severe"
+//                    }
+//
+//                }
+//                "bims and instructions" -> {
+//                    when (totalScore) {
+//                        in 0..7 -> severity = "Severe impairment"
+//                        in 8..12 -> severity = "Moderately impaired"
+//                        in 13..15 -> severity = "Cognitively intact"
+//                    }
+//                }
+//                "bsds2" -> {
+//                    when (totalScore) {
+//                        in 0..6 -> severity = "Highly unlikely probability of bipolar"
+//                        in 7..12 -> severity = "Low probability of bipolar"
+//                        in 13..19 -> severity = "Moderate probability of bipolar"
+//                        in 20..25 -> severity = "High probability of bipolar"
+//                    }
+//                }
+//                "btq and scoring" -> ""
+//                "cns_ls" -> when {
+//
+//                    totalScore in 1..12 -> severity = "unlikely pseudobulbar affect"
+//                    totalScore in 13..16 -> severity = "possibility of pseudobulbar affect"
+//                    (totalScore > 17) -> severity = "likely pseudobulbar affect"
+//                }
+//                "dast-english" -> {
+//                    when {
+//                        (totalScore == 0) -> severity = "Healthy"
+//                        totalScore in 1..2 -> severity = "Risky"
+//                        totalScore in 3..5 -> severity = "Harmful"
+//                        (totalScore > 6) -> severity = "Severe"
+//                    }
+//                }
+//                "fagerstrom_test" -> {
+//                    when {
+//                        totalScore in 1..2 -> severity = "Low dependence"
+//                        totalScore in 3..4 -> severity = "Low to moderate dependence"
+//                        totalScore in 5..7 -> severity = "Moderate dependence"
+//                        (totalScore > 6) -> severity = "Severe dependence"
+//                    }
+//                }
+//                "gad7" -> {
+//                    when (totalScore) {
+//                        in 0..5 -> severity = "Normal"
+//                        in 6..10 -> severity = "Mild anxiety"
+//                        in 11..15 -> severity = "Moderate anxiety"
+//                    }
+//                }
+//                "gds" -> {
+//                    when {
+//                        totalScore in 0..5 -> severity = "Not suggestive of depression"
+//                        totalScore in 6..10 -> severity =
+//                            "Suggestive of possible depression, need further assessment"
+//                        (totalScore > 10) -> severity =
+//                            "Almost always indicative of depression, most likely need treatment"
+//                    }
+//                }
+//                "pcl" -> {
+//                    when {
+//                        totalScore in 1..2 -> severity = "Below Moderately"
+//                        totalScore in 3..5 -> severity = "Moderately or above"
+//                        totalScore > 6 -> severity = "Moderately or above"
+//
+//                    }
+//                }
+//                "phq-9 scale" -> {
+//                    when (totalScore) {
+//                        in 0..4 -> severity = "Minimal depression"
+//                        in 5..9 -> severity = "Mild depression"
+//                        in 10..14 -> severity = "Moderate depression"
+//                        in 15..19 -> severity = "Moderately severe depression"
+//                        in 20..27 -> severity = "Severe depression"
+//                    }
+//
+//                }
+//                "aims" -> {
+//                    when (totalScore) {
+//                        in 0..2 -> severity = "Mild"
+//                        3 -> severity = "Moderate"
+//                        4 -> severity = "Severe"
+//                    }
+//
+//                }
+//
+//
+//                /*
+//                  switch score {
+//            case 0...2:
+//                return "Mild"
+//            case 3:
+//                return "Moderate"
+//            case 4:
+//                return "Severe"
+//            default:
+//                return ""
+//            }
+//
+//                */
+//
+//
+//            }
+//            return severity;
+//
+//        }
 
 
     }
